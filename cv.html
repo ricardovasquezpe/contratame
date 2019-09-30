@@ -6,6 +6,7 @@
     </head>
     <body>
         <div class="fixed-top text-center tips_container">
+            <div style="position: absolute;left:0;padding-left: 10px"><strong>Contratame.com</strong></div>
             <i class="fas fa-chevron-left arrows_tips" style="margin-right: 10px" onclick="previousTip()"></i>
             <p class="tips"></p>
             <i class="fas fa-chevron-right arrows_tips" style="margin-left: 10px" onclick="nextTip()"></i>
@@ -232,11 +233,15 @@
 
     <script>
         var tips = 
-        ["Más de 1000 developers registrados"];
+        ["Más de 1000 developers registrados en contratame",
+        "Busca programadores en base a sus experiencias y skills",
+        "A menudo los mejores perfiles son los que mas proyectos y skills tienen",
+        "Este es un espacio exclusivamente para empresas que buscan programadores"];
 
         $(".tips").text(tips[0]);
         var index_tip = 0;
         function nextTip(){
+            console.log("hola")
             clearInterval(tipsInterval);
             tipsInterval = setInterval(moveItem,10000);
             if(index_tip == tips.length - 1){

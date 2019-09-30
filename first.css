@@ -81,3 +81,23 @@ body{
     margin-top: auto; 
     margin-bottom: auto;
 }
+
+.modal-content{
+    border-radius: 0;
+}
+
+.modal-footer{
+    border-top: 0;
+}
+
+input[type="text"], input[type="email"], input[type="password"]{
+    border-radius: 0;
+    height: 50px;
+}
+
+.form-control:focus {
+    border-color: rgba(108, 39, 148, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+    outline: 0 none;
+    border-width: 2px
+}
