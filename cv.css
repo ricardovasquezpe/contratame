@@ -1,0 +1,163 @@
+body{
+    background: rgba(123, 60, 157, 0.33);
+    color: #565555
+}
+
+.tips_container{
+    background-color: #9f9d9d; 
+    color:white; 
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+@media (max-width: 700px) {
+    .tips_container {
+        display: none;
+    }
+}
+
+.arrows_tips{
+    cursor: pointer;
+}
+
+.tips{
+    display: inline-block;
+    margin: 0;
+}
+
+.card{
+    background-color: #f7f6f6;
+    border-radius: 0;
+    border: 0;
+}
+
+.btn{
+    border-radius: 0px;
+}
+
+.btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn-primary{
+    background-color: #6c2794;
+    opacity: 0.9;
+    border: 0px
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #6c2794 !important;
+    opacity: 1;
+}
+
+.btn-primary.disabled, .btn-primary:disabled{
+    background-color: #6c2794;
+    opacity: 0.6;
+}
+
+.flexbox {
+	display:flex;
+	justify-content:center;
+	align-items: center;
+	flex-flow: column;
+}
+
+.badge-primary{
+    background-color: #7b3c9d;
+    border-radius: 0;
+}
+
+.first_nombre{
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+
+.first_direccion{
+    font-size: 13px
+}
+
+.first_contactos{
+    font-size: 18px
+}
+
+.btn_invitar{
+    height: 60px;
+    font-size: 20px; 
+    width: 140px
+}
+
+.card-title{
+    color: #6c2794;
+    font-weight: bold;
+}
+
+.expandir{
+    font-size: 14px;
+    color:#6f6f6f
+}
+
+.expandir_icon{
+    font-size: 13px;
+    color:#6f6f6f
+}
+
+.skills{
+    font-size: 15px;
+    font-weight: 100;
+    margin-bottom: 5px;
+}
+
+.links{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: underline;
+}
+
+.container_principal{
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+
+[class*=col-] {
+    margin-bottom: 10px;
+}
+
+@media ( max-width: 500px ) {
+    .container_principal{
+        margin-top: 10px;
+        margin-bottom: 0px
+    }
+}
+
+@media ( max-width: 768px ) {
+    .text_center_first{
+        text-align: center
+    }
+}
+
+@media ( min-width: 500px ) {
+    [class*=col-] {
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 576px){
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px){
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 992px){
+    .container {
+        max-width: 960px;
+    }
+}
+
