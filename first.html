@@ -18,7 +18,7 @@
                                 <p class="items_header" style="margin: 0;">Nosotros</p>
                             </div>
                             <div class="col-sm-3">
-                                <p class="items_header" style="margin: 0;">Ejemplos</p>
+                                <p class="items_header" style="margin: 0;" onclick="redirigir('cv.html')">Ejemplos</p>
                             </div>
                         </div>
                     </div>
@@ -46,14 +46,14 @@
                     <p class="title_two">Queremos ayudarte a que encuentres trabajo de manera rapida y sencilla</p>
                 </div>
                 <div class="text-center" style="margin-top: 40px">
-                    <button type="button" class="btn btn-primary btn_empezar" style="height: 60px;">Empezar!</button>
+                    <button type="button" class="btn btn-primary btn_empezar" style="height: 60px;" onclick="redirigir('index.html')">Empezar!</button>
                 </div>
             </div>
             
         </section>
 
         <div class="modal fade" id="modal_ingresar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content" style="padding-top: 10px;padding-bottom: 10px;">
                     <div class="modal-body">
                         <div>
@@ -86,6 +86,10 @@
     <script>
         function abrirIngresar(){
             $('#modal_ingresar').modal('toggle');
+        }
+
+        function redirigir(url){
+            location.href = url;
         }
     </script>
 
