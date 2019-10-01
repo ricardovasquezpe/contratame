@@ -34,6 +34,11 @@ body{
     opacity: 0.6;
 }
 
+.form-control{
+    border-radius: 0;
+    border: 2px solid #ced4da
+}
+
 .form-control:focus {
     border-color: rgba(108, 39, 148, 0.8);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
@@ -44,6 +49,10 @@ body{
 input[type="text"], input[type="email"]{
     border-radius: 0;
     height: 50px;
+}
+
+textarea{
+    border: 0;
 }
 
 select{
@@ -226,4 +235,100 @@ select{
     display: inline-block;
     text-align: left;
     vertical-align: middle;
+}
+
+.modal-header{
+    border-bottom: 0;
+}
+
+.modal-body [class*="col-"] {
+    margin-bottom: 0px;
+}
+
+.btn-delete{
+    background-color: red;
+    opacity: 0.9;
+    border: 0px;
+    color:white
+}
+
+.btn-delete:hover, .btn-delete:active, .btn-delete:visited {
+    background-color: red !important;
+    opacity: 1;
+    color:white
+}
+
+.btn-delete.disabled, .btn-delete:disabled{
+    background-color: red;
+    opacity: 0.6;
+}
+
+.btn-cerrar{
+    background-color: #9f9d9d;
+    opacity: 0.9;
+    border: 0px;
+    color:white
+}
+
+.btn-cerrar:hover, .btn-cerrar:active, .btn-cerrar:visited {
+    background-color: #9f9d9d !important;
+    opacity: 1;
+    color:white
+}
+
+.btn-cerrar.disabled, .btn-cerrar:disabled{
+    background-color: #9f9d9d;
+    opacity: 0.6;
+}
+
+.checkbox-custom {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    display: inline-block;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+}
+
+.checkbox-custom:after {
+    content: '';
+    position: absolute;
+    display: block;
+    z-index: 1;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ced4da;
+    border-radius: 2px;
+}
+
+.checkbox-custom[type=checkbox]:before {
+    background: #6c2794 url("http://i.imgur.com/dR1TM0y.png");
+    background-size: 10px 8px;
+    background-repeat: no-repeat;
+    background-position: 3px 4px;
+    position: absolute;
+    left: 2px;
+    z-index: 2;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    color: #6c2794;
+}
+
+.checkbox-custom[type=checkbox]:checked:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    opacity: 1;
+    left: 0px;
+    border: 1px solid #6c2794;
+    border-radius: 2px;
 }
