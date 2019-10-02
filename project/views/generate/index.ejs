@@ -168,7 +168,7 @@
                                 <h3 class="color_gray">2/4</h3>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" id="expproyectos_container">
                             <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
                                 <div class="card square">
                                     <div class="card-body" style="padding-bottom: 0">
@@ -238,7 +238,7 @@
                             </div>
 
                             <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
-                                <div class="card square text-center new_exp" onclick="openNuevoProyecto()">
+                                <div class="card square text-center new_exp" onclick="$('#modal_agregar_proyecto').modal('toggle');">
                                     <div class="card-body" style="padding: 20px">
                                         <p style="font-size: 16px;margin:0; margin-bottom: 5px; color:#565555">Agregar Proyectos</p>
                                         <i class="fas fa-plus" style="font-size: 22px;color:#565555"></i>
@@ -397,7 +397,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="modal_nuevo_proyecto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modal_agregar_proyecto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -411,48 +411,48 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="correo" class="color_gray">Nombre</label>
-                                    <input type="text" class="form-control color_gray" id="correo">
+                                    <label for="nombre_proyecto" class="color_gray">Nombre</label>
+                                    <input type="text" class="form-control color_gray" id="nombre_proyecto">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="correo" class="color_gray">Puesto</label>
-                                    <input type="text" class="form-control color_gray" id="correo">
+                                    <label for="puesto_proyecto" class="color_gray">Puesto</label>
+                                    <input type="text" class="form-control color_gray" id="puesto_proyecto">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="fingreso" class="color_gray">Fecha Comienzo</label>
-                                    <input type="text" class="form-control color_gray" id="fingreso">
+                                    <label for="fcomienzo_proyecto" class="color_gray">Fecha Comienzo</label>
+                                    <input type="text" class="form-control color_gray" id="fcomienzo_proyecto" date-mask>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="fsalida" class="color_gray">Fecha Terminado</label>
-                                    <input type="text" class="form-control color_gray" id="fsalida">
+                                    <label for="fterminado_proyecto" class="color_gray">Fecha Terminado</label>
+                                    <input type="text" class="form-control color_gray" id="fterminado_proyecto" date-mask>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-sm-push-6"></div>
                             <div class="col-sm-6">
                                 <input type="checkbox" class="checkbox-custom"/>
-                                <label class="form-check-label color_gray" for="actual">Actual</label>
+                                <label class="form-check-label color_gray" for="actual" id="actual_proyecto">Actual</label>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="correo" class="color_gray">Descripción</label>
-                                    <textarea type="text" class="form-control color_gray" id="correo"></textarea>
+                                    <label for="descripcion_proyecto" class="color_gray">Descripción</label>
+                                    <textarea type="text" class="form-control color_gray" id="descripcion_proyecto"></textarea>
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="correo" class="color_gray">Links de Referencia (Separados por comas)</label>
-                                    <textarea type="text" class="form-control color_gray" id="correo"></textarea>
+                                    <label for="referencias_proyecto" class="color_gray">Links de Referencia (Separados por comas)</label>
+                                    <textarea type="text" class="form-control color_gray" id="referencias_proyecto"></textarea>
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="text-center" style="width: 100%">
-                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" data-dismiss="modal">Agregar</button>
+                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" onclick="agregarProyecto()">Agregar</button>
                                 </div>
                             </div>
                         </div>
@@ -632,114 +632,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="../plugins/jquery.page/jquery.page.min.js"></script>
     <script src="../plugins/input_tag/tagsinput.js"></script>
-
-    <script>
-        var tips = 
-        ["Más de 1000 empresas en todo el Perú buscan un perfil como el tuyo",
-        "Mejora tu perfil y tendras más oportunidades de obtener el empleo ideal",
-        "Las empresas se fijan más en las experiencias obtenidas",
-        "Este es un espacio exclusivamente para desarrolladores de programación como tú",
-        "Puedes agregar proyectos propios o hechos en la universidad",
-        "Seras más valorado por las experiencias y proyectos trabajados",
-        "Puedes agregar mas experiencia cuando quieras desde tu laptop o celular",
-        "Las empresas se comunicaran contigo atravez de teléfono o correo que ingreses"];
-
-        $(".tips").text(tips[0]);
-        var index_tip = 0;
-        function nextTip(){
-            clearInterval(tipsInterval);
-            tipsInterval = setInterval(moveItem,10000);
-            if(index_tip == tips.length - 1){
-                index_tip = 0;
-                $(".tips").text(tips[index_tip]);
-                return;
-            }
-            index_tip++;
-            $(".tips").text(tips[index_tip]);
-        }
-
-        function previousTip(){
-            clearInterval(tipsInterval);
-            tipsInterval = setInterval(moveItem,10000);
-            if(index_tip == 0){
-                index_tip = tips.length - 1
-                $(".tips").text(tips[index_tip]);
-                return;
-            }
-            index_tip--;
-            $(".tips").text(tips[index_tip]);
-        }
-
-        function validarCampos(){
-            var fields = $("[mandatory]");
-            $('#siguiente').prop('disabled', false);
-            $.each( fields, function( key, value ) {
-                if($(value).val() == "" || $(value).val() == null){
-                    $('#siguiente').prop('disabled', true);
-                }
-            });
-        }
-
-        var index_page = 1;
-        function siguiente(){
-            $("#siguiente").val("Siguiente");
-            if(index_page == 1){
-                if(!validateEmail($("#correo").val())){
-                    //return;
-                }
-
-                if($("#telefono").val().length != 9){
-                    //return;
-                }
-            }else if(index_page == 2){
-
-            }else if(index_page == 3){
-                $("#siguiente").html("Terminar");
-            }else if(index_page == 4){
-                $('#modal_terminando').modal('toggle');
-                setTimeout(function(){ 
-                    $("#cv_cargando").hide();
-                    $("#cv_completo").show(); 
-                    $('#ver_mi_cv').prop('disabled', false);
-                }, 5000);
-                return;
-            }
-            $('#atras').prop('disabled', false);
-            index_page++;
-            redirectSection(index_page.toString(), "slide-in-from-right");
-        }
-
-        function atras(){
-            $("#siguiente").html("Siguiente");
-            if(index_page == 2){
-                $('#atras').prop('disabled', true);
-            }
-            index_page--;
-            redirectSection(index_page.toString(), "slide-in-from-left");
-        }
-
-        function redirectSection(page, trans){
-            $(".screen").page().transition(page, trans);
-        }
-
-        function validateEmail(email) {
-            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(String(email).toLowerCase());
-        }
-
-        var tipsInterval = null;
-        function moveItem() {
-            nextTip();
-        }
-        
-        $(document).ready(function () {
-            $(".screen").page();
-            tipsInterval = setInterval(moveItem,12000);
-            $('#modal_bienvenida').modal('toggle');
-        });
-
-        function openNuevoProyecto(){
-            $('#modal_nuevo_proyecto').modal('toggle');
-        }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="../js/generate/template.js"></script>
+    <script src="../js/generate/generate.js"></script>
 </html>
