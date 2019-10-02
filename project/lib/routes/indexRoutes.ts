@@ -4,7 +4,7 @@ import { check } from "express-validator";
 import { CustomValidators } from "../util/customValidators";
 import { verify } from 'jsonwebtoken';
 
-export class UserRoutes { 
+export class IndexRoutes { 
     
     public userController: UserController = new UserController() 
     public customValidators: CustomValidators = new CustomValidators();
@@ -13,9 +13,7 @@ export class UserRoutes {
 
         app.route('/')
         .get((req: Request, res: Response) => {            
-            res.status(200).send({
-                message: 'API Working Correctly'
-            })
+            res.render('landing/first', { title: 'Express' });
         });
         
         app.route('/login').post([
@@ -55,7 +53,7 @@ export class UserRoutes {
                 return;
             }
         }
-        app.use(middleware);
+        //app.use(middleware);
 
     }
 }

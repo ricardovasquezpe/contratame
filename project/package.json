@@ -4,7 +4,6 @@
   "description": "Contratame App",
   "main": "dist/server.js",
   "scripts": {
-    "coverage": "jest --coverage",
     "build": "tsc",
     "dev": "ts-node-dev ./lib/server.ts",
     "start": "node ./dist/server.js",

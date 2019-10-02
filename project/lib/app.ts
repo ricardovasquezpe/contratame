@@ -1,19 +1,25 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
-import { UserRoutes } from "./routes/userRouter";
+import { IndexRoutes } from "./routes/indexRoutes";
+import { CvRoutes } from "./routes/cvRoutes";
+import { GenerateCvRoutes } from "./routes/generateCvRoutes";
 import * as mongoose from "mongoose";
 import * as path from "path";
 
 class App {
 
     public app: express.Application = express();
-    public routePrv: UserRoutes = new UserRoutes();
+    public indexRoutes: IndexRoutes = new IndexRoutes();
+    public cvRoutes: CvRoutes = new CvRoutes();
+    public generateCvRoutes: GenerateCvRoutes = new GenerateCvRoutes();
     public mongoUrl: string = 'mongodb://localhost/test';
 
     constructor() {
         this.config();
         this.mongoSetup();
-        this.routePrv.routes(this.app);  
+        this.indexRoutes.routes(this.app);
+        this.cvRoutes.routes(this.app);
+        this.generateCvRoutes.routes(this.app);
     }
 
     private config(): void{
