@@ -1,0 +1,745 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="../plugins/jquery.page/jquery.page.css">
+        <link rel="stylesheet" href="../plugins/input_tag/tagsinput.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="fixed-top text-center tips_container">
+            <div style="position: absolute;left:0;padding-left: 10px"><strong>Contratame.com</strong></div>
+            <i class="fas fa-chevron-left arrows_tips" style="margin-right: 10px" onclick="previousTip()"></i>
+            <p class="tips"></p>
+            <i class="fas fa-chevron-right arrows_tips" style="margin-left: 10px" onclick="nextTip()"></i>
+        </div>
+        <div class="screen">
+            <div>
+                <section id="personal" class="page" data-jquery-page-name="1">
+                    <div class="container">
+                        <div class="row titulo_princ">
+                            <div class="col-sm-10 col-xs-10">
+                                <h2 class="color_gray">Información Básica</h2>
+                            </div>
+                            <div class="col-sm-2 col-xs-2 text-right">
+                                <h3 class="color_gray">1/4</h3>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 10vh">
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="nombres" class="color_gray">Nombres</label>
+                                    <input type="text" class="form-control" id="nombres" mandatory onkeyup="validarCampos()">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="apellidos" class="color_gray">Apellidos</label>
+                                    <input type="text" class="form-control" id="apellidos" mandatory onkeyup="validarCampos()">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="correo" class="color_gray">Correo electrónico</label>
+                                    <input type="email" class="form-control" id="correo" mandatory onkeyup="validarCampos()">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="telefono" class="color_gray">Teléfono</label>
+                                    <input type="text" maxlength="9" class="form-control" id="telefono" mandatory onkeyup="validarCampos()">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="departamento" class="color_gray">Departamento</label>
+                                    <select class="form-control" id="departamento" mandatory onchange="validarCampos()">
+                                        <option value="" selected disabled hidden>Escoge</option>
+                                        <option value="1">Lima</option>
+                                        <option value="2">Ayacucho</option>
+                                        <option value="3">La Libertad</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="distrito" class="color_gray">Distrito</label>
+                                    <select class="form-control" mandatory id="distrito" onchange="validarCampos()">
+                                        <option value="" selected disabled hidden>Escoge</option>
+                                        <option value="1">San Isidro</option>
+                                        <option value="2">La Molina</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="explaboral" style="margin-top: 0vh" class="page" data-jquery-page-name="3" style="display: none">
+                    <div class="container">
+                        <div class="row titulo_princ">
+                            <div class="col-sm-10">
+                                <h2 class="color_gray">Experiencia Laboral</h2>
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                <h3 class="color_gray">3/4</h3>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5vh">
+                            <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
+                                <div class="card square">
+                                    <div class="card-body" style="padding-bottom: 0">
+                                        <div class="text-center">
+                                            <p class="exp_titulo">Fulltimeforce</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="exp_desc">Fullstack Developer</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="exp_fecha">Desde 28/08/2011 hasta Actual</p>
+                                        </div>
+                                        <div>
+                                            <p class="exp_titulo_leng">Lenguajes de programación / Herramientas</p>
+                                            <ul class="exp_desc_leng">
+                                                <li>Android</li>
+                                                <li>Firebase</li>
+                                                <li>Google Maps</li>
+                                                <li>Patron de arquitectura MVP</li>
+                                                <li>Más</li>
+                                            </ul> 
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-transparent text-center">
+                                        <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
+                                        <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
+                                <div class="card square">
+                                    <div class="card-body" style="padding-bottom: 0">
+                                        <div class="text-center">
+                                            <p class="exp_titulo">Fulltimeforce</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="exp_desc">Fullstack Developer</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="exp_fecha">Desde 28/08/2011 hasta Actual</p>
+                                        </div>
+                                        <div>
+                                            <p class="exp_titulo_leng">Lenguajes de programación / Herramientas</p>
+                                            <ul class="exp_desc_leng">
+                                                <li>Android</li>
+                                                <li>Firebase</li>
+                                                <li>Google Maps</li>
+                                                <li>Patron de arquitectura MVP</li>
+                                                <li>Más</li>
+                                            </ul> 
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-transparent text-center">
+                                        <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
+                                        <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
+                                <div class="card square text-center new_exp">
+                                    <div class="card-body" style="padding: 20px">
+                                        <p style="font-size: 16px;margin:0; margin-bottom: 5px; color:#565555">Agregar Experiencia</p>
+                                        <i class="fas fa-plus" style="font-size: 22px;color:#565555"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section id="expproyectos" style="margin-top: 0vh" class="page" data-jquery-page-name="2" style="display: none">
+                    <div class="container">
+                        <div class="row titulo_princ">
+                            <div class="col-sm-10">
+                                <h2 class="color_gray">Proyectos</h2>
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                <h3 class="color_gray">2/4</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
+                                <div class="card square">
+                                    <div class="card-body" style="padding-bottom: 0">
+                                        <div class="text-center">
+                                            <p class="exp_titulo">ePaisa</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="exp_desc">Backend Developer</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="exp_fecha">Desde 28/08/2011 hasta Actual</p>
+                                        </div>
+                                        <div>
+                                            <p class="exp_titulo_leng">Sistema de pagos con POS y otros medios de pagos online con más de 1000 usuarios concurrentes.
+                                                Encargado del backend y de la creación de nuevos API's en base a microservicios
+                                            </p>
+                                        </div>
+                                        <div style="margin-top: 10px">
+                                            <p class="exp_titulo_leng">Referencias</p>
+                                            <ul class="exp_desc_leng" style="text-decoration: underline;cursor: pointer;">
+                                                <li>https://www.epaisa.com/</li>
+                                                <li>https://play.google.com/store/apps/details?id=com.epaisa.pos</li>
+                                                <li>https://apps.apple.com/ec/app/payments-by-epaisa/id1181308749</li>
+                                                <li>https://www.facebook.com/myepaisa/</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-transparent text-center">
+                                        <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
+                                        <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
+                                <div class="card square">
+                                    <div class="card-body" style="padding-bottom: 0">
+                                        <div class="text-center">
+                                            <p class="exp_titulo">ePaisa</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="exp_desc">Backend Developer</p>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="exp_fecha">Desde 28/08/2011 hasta Actual</p>
+                                        </div>
+                                        <div>
+                                            <p class="exp_titulo_leng">Sistema de pagos con POS y otros medios de pagos online con más de 1000 usuarios concurrentes.
+                                                Encargado del backend y de la creación de nuevos API's en base a microservicios
+                                            </p>
+                                        </div>
+                                        <div style="margin-top: 10px">
+                                            <p class="exp_titulo_leng">Referencias</p>
+                                            <ul class="exp_desc_leng" style="text-decoration: underline;cursor: pointer;">
+                                                <li>https://www.epaisa.com/</li>
+                                                <li>https://play.google.com/store/apps/details?id=com.epaisa.pos</li>
+                                                <li>https://apps.apple.com/ec/app/payments-by-epaisa/id1181308749</li>
+                                                <li>https://www.facebook.com/myepaisa/</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-transparent text-center">
+                                        <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
+                                        <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
+                                <div class="card square text-center new_exp" onclick="openNuevoProyecto()">
+                                    <div class="card-body" style="padding: 20px">
+                                        <p style="font-size: 16px;margin:0; margin-bottom: 5px; color:#565555">Agregar Proyectos</p>
+                                        <i class="fas fa-plus" style="font-size: 22px;color:#565555"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section id="exppersonal" style="margin-top: 0vh" class="page" data-jquery-page-name="4" style="display: none">
+                    <div class="container">
+                        <div class="row titulo_princ">
+                            <div class="col-sm-10">
+                                <h2 class="color_gray">Cuentanos algo más de ti</h2>
+                            </div>
+                            <div class="col-sm-2 text-right">
+                                <h3 class="color_gray">4/4</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-group">
+                                    <label for="skills" class="color_gray">Skills o Herramientas</label>
+                                    <input type="text" id="skills" value="Reactjs,PHP,Jenkins" data-role="tagsinput">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="idiomas" class="color_gray">Idiomas</label>
+                                    <input type="text" id="idiomas" value="Español" data-role="tagsinput">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <label class="color_gray">Estudios (No obligatorio)</label>
+                                <div class="row" style="margin-top: 5px">
+                                    <div class="col-sm-6 col-lg-3 col-md-4">
+                                        <div class="card square">
+                                            <div class="card-body" style="padding-bottom: 0">
+                                                <div class="text-center">
+                                                    <p class="exp_titulo">Scrum Master</p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <p class="exp_desc">10/10/2019</p>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer bg-transparent text-center">
+                                                <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
+                                                <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-3 col-md-4">
+                                        <div class="card square">
+                                            <div class="card-body" style="padding-bottom: 0">
+                                                <div class="text-center">
+                                                    <p class="exp_titulo">Devops Master</p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <p class="exp_desc">10/10/2019</p>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer bg-transparent text-center">
+                                                <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
+                                                <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-3 col-md-4">
+                                        <div class="card square">
+                                            <div class="card-body" style="padding-bottom: 0">
+                                                <div class="text-center">
+                                                    <p class="exp_titulo">ITIL Cert</p>
+                                                </div>
+                                                <div class="text-center">
+                                                    <p class="exp_desc">10/10/2019</p>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer bg-transparent text-center">
+                                                <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
+                                                <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-3 col-md-4">
+                                        <div class="card square text-center new_exp">
+                                            <div class="card-body" style="padding: 20px">
+                                                <p style="font-size: 16px;margin:0; margin-bottom: 5px; color:#565555">Agregar Estudios</p>
+                                                <i class="fas fa-plus" style="font-size: 22px;color:#565555"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+        <footer class="footer">
+            <button type="button" class="btn btn-primary btn_direccion" id="atras" onclick="atras()" style="float: left;" disabled>Atras</button>
+            <button type="button" class="btn btn-primary btn_direccion" id="siguiente" onclick="siguiente()">Siguiente</button>
+        </footer>
+
+        <div class="modal fade" id="modal_bienvenida" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="padding-top: 10px;padding-bottom: 10px;">
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <img src="https://dummyimage.com/200x200/d4d4d4/000000.jpg"/>
+                            <p class="color_gray" style="margin-top: 20px;font-weight: bold; margin-bottom: 0;">Todo empieza con 1 solo click..</p>
+                            <p class="color_gray" style="font-size: 14px;">Contrata.me te ayudará a destacar tu perfil en cualquier medio! Recuerda agregar todos los detalles e información y asi las empresas te encontraran más rapido</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="padding-top: 0px">
+                        <div class="text-center" style="width: 100%">
+                            <button type="button" class="btn btn-primary" style="width: 48%;height: 48px;font-size: 20px" data-dismiss="modal">Iniciar!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal_terminando" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content" style="padding-top: 15px;padding-bottom: 10px;">
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <div id="cv_cargando">
+                                <div class="d-flex justify-content-center" style="margin-bottom: 30px">
+                                    <div class="spinner-border" style="color: #7b3d9f!important;width: 4rem;height: 4rem;" role="status">
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <p class="color_gray" style="margin-top: 20px;font-weight: bold; margin-bottom: 0;">Estamos generando tu CV online</p>
+                                <p class="color_gray" style="font-size: 14px;">En unos segundos te redirigiremos a tu CV y podras compartirlo con las empresas y/o startups</p>    
+                            </div>
+                            <div style="display: none" id="cv_completo">
+                                <div class="d-flex justify-content-center" style="margin-bottom: 30px">
+                                    <i class="fas fa-thumbs-up" style="font-size: 100px; color:#69b969"></i>
+                                </div>
+                                <p class="color_gray" style="margin-top: 20px;font-weight: bold; margin-bottom: 0;">Ya esta todo listo!</p>
+                                <p class="color_gray" style="font-size: 14px;">Da click en el boton, ve tu nuevo CV online y compartelo!</p>    
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="padding-top: 0px">
+                        <div class="text-center" style="width: 100%">
+                            <button type="button" id="ver_mi_cv" class="btn btn-primary" style="width: 48%;height: 48px;font-size: 20px" data-dismiss="modal" disabled>Ver mi CV</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal_nuevo_proyecto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title color_gray">Agregar Proyecto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center"></div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="correo" class="color_gray">Nombre</label>
+                                    <input type="text" class="form-control color_gray" id="correo">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="correo" class="color_gray">Puesto</label>
+                                    <input type="text" class="form-control color_gray" id="correo">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="fingreso" class="color_gray">Fecha Comienzo</label>
+                                    <input type="text" class="form-control color_gray" id="fingreso">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="fsalida" class="color_gray">Fecha Terminado</label>
+                                    <input type="text" class="form-control color_gray" id="fsalida">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-sm-push-6"></div>
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="checkbox-custom"/>
+                                <label class="form-check-label color_gray" for="actual">Actual</label>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="correo" class="color_gray">Descripción</label>
+                                    <textarea type="text" class="form-control color_gray" id="correo"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="correo" class="color_gray">Links de Referencia (Separados por comas)</label>
+                                    <textarea type="text" class="form-control color_gray" id="correo"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="text-center" style="width: 100%">
+                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" data-dismiss="modal">Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal_eliminar_proyecto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content" style="padding-top: 10px;padding-bottom: 10px;">
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <img src="https://dummyimage.com/100x100/d4d4d4/000000.jpg"/>
+                            <p class="color_gray" style="margin-top: 20px;font-weight: bold; margin-bottom: 0;">¿Deseas eliminar el proyecto?</p>
+                            <p class="color_gray" style="font-size: 14px;">Recuerda que mientras más proyectos tengas, tiene más oportunidades de que las empresas se fijen en tu perfil</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="padding-top: 0px; justify-content:center">
+                        <div>
+                            <button type="button" class="btn btn-cerrar" style="height: 48px;font-size: 20px" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-delete" style="height: 48px;font-size: 20px" data-dismiss="modal">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal_nueva_experiencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title color_gray">Agregar Exp. Laboral</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center"></div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="correo" class="color_gray">Empresa</label>
+                                    <input type="text" class="form-control color_gray" id="correo">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="correo" class="color_gray">Puesto</label>
+                                    <input type="text" class="form-control color_gray" id="correo">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="fingreso" class="color_gray">Fecha Ingreso</label>
+                                    <input type="text" class="form-control color_gray" id="fingreso">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="fsalida" class="color_gray">Fecha Salida</label>
+                                    <input type="text" class="form-control color_gray" id="fsalida">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-sm-push-6"></div>
+                            <div class="col-sm-6">
+                                <input type="checkbox" class="checkbox-custom"/>
+                                <label class="form-check-label color_gray" for="actual">Actual</label>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="correo" class="color_gray">Descripción</label>
+                                    <textarea type="text" class="form-control color_gray" id="correo"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="correo" class="color_gray">Herramientas (Separados por comas)</label>
+                                    <textarea type="text" class="form-control color_gray" id="correo"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="text-center" style="width: 100%">
+                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" data-dismiss="modal">Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal_eliminar_experiencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content" style="padding-top: 10px;padding-bottom: 10px;">
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <img src="https://dummyimage.com/100x100/d4d4d4/000000.jpg"/>
+                            <p class="color_gray" style="margin-top: 20px;font-weight: bold; margin-bottom: 0;">¿Deseas eliminar la Exp. Laboral?</p>
+                            <p class="color_gray" style="font-size: 14px;">Recuerda que mientras más proyectos tengas, tiene más oportunidades de que las empresas se fijen en tu perfil</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="padding-top: 0px; justify-content:center">
+                        <div>
+                            <button type="button" class="btn btn-cerrar" style="height: 48px;font-size: 20px" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-delete" style="height: 48px;font-size: 20px" data-dismiss="modal">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal_nuevo_estudio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title color_gray">Agregar Estudio</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center"></div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="correo" class="color_gray">Titulo</label>
+                                    <input type="text" class="form-control color_gray" id="correo">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="correo" class="color_gray">Fecha Obtención</label>
+                                    <input type="text" class="form-control color_gray" id="correo">
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="correo" class="color_gray">Link de Referencia</label>
+                                    <textarea type="text" class="form-control color_gray" id="correo"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="text-center" style="width: 100%">
+                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" data-dismiss="modal">Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="modal_eliminar_estudio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content" style="padding-top: 10px;padding-bottom: 10px;">
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <img src="https://dummyimage.com/100x100/d4d4d4/000000.jpg"/>
+                            <p class="color_gray" style="margin-top: 20px;font-weight: bold; margin-bottom: 0;">¿Deseas eliminar el Estudio?</p>
+                            <p class="color_gray" style="font-size: 14px;">Recuerda que mientras más proyectos tengas, tiene más oportunidades de que las empresas se fijen en tu perfil</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="padding-top: 0px; justify-content:center">
+                        <div>
+                            <button type="button" class="btn btn-cerrar" style="height: 48px;font-size: 20px" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-delete" style="height: 48px;font-size: 20px" data-dismiss="modal">Eliminar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../plugins/jquery.page/jquery.page.min.js"></script>
+    <script src="../plugins/input_tag/tagsinput.js"></script>
+
+    <script>
+        var tips = 
+        ["Más de 1000 empresas en todo el Perú buscan un perfil como el tuyo",
+        "Mejora tu perfil y tendras más oportunidades de obtener el empleo ideal",
+        "Las empresas se fijan más en las experiencias obtenidas",
+        "Este es un espacio exclusivamente para desarrolladores de programación como tú",
+        "Puedes agregar proyectos propios o hechos en la universidad",
+        "Seras más valorado por las experiencias y proyectos trabajados",
+        "Puedes agregar mas experiencia cuando quieras desde tu laptop o celular",
+        "Las empresas se comunicaran contigo atravez de teléfono o correo que ingreses"];
+
+        $(".tips").text(tips[0]);
+        var index_tip = 0;
+        function nextTip(){
+            clearInterval(tipsInterval);
+            tipsInterval = setInterval(moveItem,10000);
+            if(index_tip == tips.length - 1){
+                index_tip = 0;
+                $(".tips").text(tips[index_tip]);
+                return;
+            }
+            index_tip++;
+            $(".tips").text(tips[index_tip]);
+        }
+
+        function previousTip(){
+            clearInterval(tipsInterval);
+            tipsInterval = setInterval(moveItem,10000);
+            if(index_tip == 0){
+                index_tip = tips.length - 1
+                $(".tips").text(tips[index_tip]);
+                return;
+            }
+            index_tip--;
+            $(".tips").text(tips[index_tip]);
+        }
+
+        function validarCampos(){
+            var fields = $("[mandatory]");
+            $('#siguiente').prop('disabled', false);
+            $.each( fields, function( key, value ) {
+                if($(value).val() == "" || $(value).val() == null){
+                    $('#siguiente').prop('disabled', true);
+                }
+            });
+        }
+
+        var index_page = 1;
+        function siguiente(){
+            $("#siguiente").val("Siguiente");
+            if(index_page == 1){
+                if(!validateEmail($("#correo").val())){
+                    //return;
+                }
+
+                if($("#telefono").val().length != 9){
+                    //return;
+                }
+            }else if(index_page == 2){
+
+            }else if(index_page == 3){
+                $("#siguiente").html("Terminar");
+            }else if(index_page == 4){
+                $('#modal_terminando').modal('toggle');
+                setTimeout(function(){ 
+                    $("#cv_cargando").hide();
+                    $("#cv_completo").show(); 
+                    $('#ver_mi_cv').prop('disabled', false);
+                }, 5000);
+                return;
+            }
+            $('#atras').prop('disabled', false);
+            index_page++;
+            redirectSection(index_page.toString(), "slide-in-from-right");
+        }
+
+        function atras(){
+            $("#siguiente").html("Siguiente");
+            if(index_page == 2){
+                $('#atras').prop('disabled', true);
+            }
+            index_page--;
+            redirectSection(index_page.toString(), "slide-in-from-left");
+        }
+
+        function redirectSection(page, trans){
+            $(".screen").page().transition(page, trans);
+        }
+
+        function validateEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        var tipsInterval = null;
+        function moveItem() {
+            nextTip();
+        }
+        
+        $(document).ready(function () {
+            $(".screen").page();
+            tipsInterval = setInterval(moveItem,12000);
+            $('#modal_bienvenida').modal('toggle');
+        });
+
+        function openNuevoProyecto(){
+            $('#modal_nuevo_proyecto').modal('toggle');
+        }
+    </script>
+</html>
