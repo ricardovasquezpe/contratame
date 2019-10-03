@@ -111,7 +111,7 @@
                         </div>
                         <div class="row" id="expproyectos_container">
                             <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
-                                <div class="card square text-center new_exp" onclick="$('#modal_agregar_proyecto').modal('toggle');">
+                                <div class="card square text-center new_exp" onclick="$('#modal_agregar_proyecto').modal('toggle');$('#btn_agregar_proyecto').html('Agregar');">
                                     <div class="card-body" style="padding: 20px">
                                         <p style="font-size: 16px;margin:0; margin-bottom: 5px; color:#565555">Agregar Proyectos</p>
                                         <i class="fas fa-plus" style="font-size: 22px;color:#565555"></i>
@@ -225,7 +225,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title color_gray">Agregar Proyecto</h5>
+                        <h5 class="modal-title color_gray">Proyecto</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -276,7 +276,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="text-center" style="width: 100%">
-                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" onclick="agregarProyecto()">Agregar</button>
+                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" onclick="agregarProyecto()" id="btn_agregar_proyecto">Agregar</button>
                                 </div>
                             </div>
                         </div>
@@ -410,7 +410,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="link_estudio" class="color_gray">Link de Referencia</label>
-                                    <textarea type="text" class="form-control color_gray" id="link_estudio"></textarea>
+                                    <input type="text" class="form-control color_gray" id="link_estudio">
                                 </div>
                             </div>
                             <div class="col-sm-12">

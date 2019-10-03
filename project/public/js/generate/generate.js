@@ -114,6 +114,10 @@ $('#actual_proyecto').change(function () {
 
 var index_proyecto = 1;
 function agregarProyecto(){
+    if(id_proyecto != null){
+        confirmEditarProyecto();
+        return;
+    }
     var nombre      = $("#nombre_proyecto").val().trim();
     var puesto      = $("#puesto_proyecto").val().trim();
     var fcomienzo   = $("#fcomienzo_proyecto").val().trim();
@@ -147,13 +151,14 @@ function agregarProyecto(){
     $("#puesto_proyecto").val("");
     $("#fcomienzo_proyecto").val("");
     $("#fterminado_proyecto").val("");
-    $('#actual_proyecto').removeAttr('checked');
-    $("#actual_proyecto").attr("checked", false);
+    $("#actual_proyecto").prop('checked', false);
     $("#descripcion_proyecto").val("");
     $("#referencias_proyecto").val("");
+    $('#fterminado_proyecto').prop('disabled', false);
 
     var proyecto = proyectoTemplate(nombre, puesto, fcomienzo, fterminado, descripcion, referencias, id);
     $("#expproyectos_container").prepend(proyecto);
+    index_proyecto++;
 
     $('#modal_agregar_proyecto').modal('toggle');
 }
@@ -173,7 +178,88 @@ function confirmEliminarProyecto(){
     
     proyectos.splice(index, 1);
     $(elem_proyecto).parent().parent().parent().remove();
+    id_proyecto = null;
     $("#modal_eliminar_proyecto").modal('toggle');
+}
+
+function editarProyecto(res_id, elem){
+    id_proyecto   = res_id;
+    elem_proyecto = elem;
+    var proyecto = proyectos.find(item => item.id === id_proyecto);
+
+    $("#nombre_proyecto").val(proyecto["nombre"]);
+    $("#puesto_proyecto").val(proyecto["puesto"]);
+    $("#fcomienzo_proyecto").val(proyecto["fcomienzo"]);
+    $("#descripcion_proyecto").val(proyecto["descripcion"]);
+    $("#referencias_proyecto").val(proyecto["referencias"]);
+
+    if(proyecto["fterminado"] == "Actual"){
+        $('#fterminado_proyecto').prop('disabled', true);
+        $("#fterminado_proyecto").val("");
+        $("#actual_proyecto").prop('checked', true);
+    }else{
+        $('#fterminado_proyecto').prop('disabled', false);
+        $("#fterminado_proyecto").val(proyecto["fterminado"]);
+        $("#actual_proyecto").prop('checked', false);
+    }
+
+    $("#btn_agregar_proyecto").html("Editar");
+    $("#modal_agregar_proyecto").modal('toggle');
+}
+
+function confirmEditarProyecto(){
+    var index = proyectos.map(x => {
+        return x.id;
+    }).indexOf(id_proyecto);
+    
+    proyectos.splice(index, 1);
+
+    var nombre      = $("#nombre_proyecto").val().trim();
+    var puesto      = $("#puesto_proyecto").val().trim();
+    var fcomienzo   = $("#fcomienzo_proyecto").val().trim();
+    var fterminado  = $("#fterminado_proyecto").val().trim();
+    var descripcion = $("#descripcion_proyecto").val().trim();
+    var referencias = $("#referencias_proyecto").val().trim();
+    if ($('#actual_proyecto').is(":checked")){
+        fterminado = "Actual";
+    }
+
+    var id = "temp_"+index_proyecto;
+    proyectos.push({
+        id: id,
+        nombre: nombre,
+        puesto: puesto,
+        fcomienzo:fcomienzo,
+        fterminado:fterminado,
+        descripcion:descripcion,
+        referencias:referencias
+    });
+
+    id_proyecto = null;
+
+    $("#nombre_proyecto").val("");
+    $("#puesto_proyecto").val("");
+    $("#fcomienzo_proyecto").val("");
+    $("#fterminado_proyecto").val("");
+    $("#actual_proyecto").prop('checked', false);
+    $("#descripcion_proyecto").val("");
+    $("#referencias_proyecto").val("");
+
+    var parent = $(elem_proyecto).parent().parent().find(".card-body");
+    $(parent).find(".exp_titulo").text(nombre);
+    $(parent).find(".exp_desc").text(puesto);
+    $(parent).find(".exp_fecha").text("Desde " + fcomienzo + " hasta " + fterminado);
+    $(parent).find(".exp_titulo_leng").first().text(descripcion);
+    $(elem_proyecto).attr("onclick", "editarProyecto('" + id + "', this)");
+
+    var links = referencias.split(",");
+    var referencias = "";
+    links.forEach(element => {
+        referencias += "<li>" + element + "</li>";
+    });
+    $(parent).find(".exp_desc_leng").html(referencias);
+
+    $("#modal_agregar_proyecto").modal('toggle');
 }
 
 var experiencias = [];
@@ -224,6 +310,7 @@ function agregarExperiencia(){
 
     var experiencia = experienciaTemplate(empresa, puesto, fingreso, fsalida, herramientas, id);
     $("#experiencias_container").prepend(experiencia);
+    index_experiencia++;
 
     $('#modal_nueva_experiencia').modal('toggle');
 }
@@ -272,6 +359,7 @@ function agregarEstudio(){
 
     var estudio = estudioTemplate(titulo, fecha, id);
     $("#estudios_container").prepend(estudio);
+    index_estudios++;
 
     $('#modal_nuevo_estudio').modal('toggle');
 }
