@@ -104,21 +104,41 @@ function moveItem() {
 }
 
 var proyectos = [];
-function agregarProyecto(){
-    var nombre      = $("#nombre_proyecto").val();
-    var puesto      = $("#puesto_proyecto").val();
-    var fcomienzo   = $("#fcomienzo_proyecto").val();
-    var fterminado  = $("#fterminado_proyecto").val();
-    var actual      = $("#actual_proyecto").val();
-    var descripcion = $("#descripcion_proyecto").val();
-    var referencias = $("#referencias_proyecto").val();
+$('#actual_proyecto').change(function () {
+    if ($('#actual_proyecto').is(":checked")){
+        $('#fterminado_proyecto').prop('disabled', true);
+    }else{
+        $('#fterminado_proyecto').prop('disabled', false);
+    }
+});
 
+var index_proyecto = 1;
+function agregarProyecto(){
+    var nombre      = $("#nombre_proyecto").val().trim();
+    var puesto      = $("#puesto_proyecto").val().trim();
+    var fcomienzo   = $("#fcomienzo_proyecto").val().trim();
+    var fterminado  = $("#fterminado_proyecto").val().trim();
+    var descripcion = $("#descripcion_proyecto").val().trim();
+    var referencias = $("#referencias_proyecto").val().trim();
+
+    if(nombre == "" || puesto == "" || fcomienzo == "" || descripcion == ""){
+        if(!$('#actual_proyecto').is(":checked") && fterminado == ""){
+            showNotification("Faltan campos", "Ingrese todos los campos", "error");
+            return;
+        }
+    }
+
+    if ($('#actual_proyecto').is(":checked")){
+        fterminado = "Actual";
+    }
+
+    var id = "temp_"+index_proyecto;
     proyectos.push({
+        id: id,
         nombre: nombre,
         puesto: puesto,
         fcomienzo:fcomienzo,
         fterminado:fterminado,
-        actual:actual,
         descripcion:descripcion,
         referencias:referencias
     });
@@ -128,12 +148,159 @@ function agregarProyecto(){
     $("#fcomienzo_proyecto").val("");
     $("#fterminado_proyecto").val("");
     $('#actual_proyecto').removeAttr('checked');
+    $("#actual_proyecto").attr("checked", false);
     $("#descripcion_proyecto").val("");
     $("#referencias_proyecto").val("");
 
-    var proyecto = proyectoTemplate(nombre, puesto, fcomienzo, fterminado, descripcion, referencias);
+    var proyecto = proyectoTemplate(nombre, puesto, fcomienzo, fterminado, descripcion, referencias, id);
     $("#expproyectos_container").prepend(proyecto);
 
     $('#modal_agregar_proyecto').modal('toggle');
 }
 
+var id_proyecto = null;
+var elem_proyecto = null;
+function eliminarProyecto(res_id, elem){
+    $("#modal_eliminar_proyecto").modal('toggle');
+    id_proyecto = res_id;
+    elem_proyecto = elem;
+}
+
+function confirmEliminarProyecto(){
+    var index = proyectos.map(x => {
+        return x.id;
+    }).indexOf(id_proyecto);
+    
+    proyectos.splice(index, 1);
+    $(elem_proyecto).parent().parent().parent().remove();
+    $("#modal_eliminar_proyecto").modal('toggle');
+}
+
+var experiencias = [];
+$('#actual_experiencia').change(function () {
+    if ($('#actual_experiencia').is(":checked")){
+        $('#fsalida_experiencia').prop('disabled', true);
+    }else{
+        $('#fsalida_experiencia').prop('disabled', false);
+    }
+});
+
+var index_experiencia = 1;
+function agregarExperiencia(){
+    var empresa     = $("#empresa_experiencia").val().trim();
+    var puesto      = $("#puesto_experiencia").val().trim();
+    var fingreso    = $("#fingreso_experiencia").val().trim();
+    var fsalida     = $("#fsalida_experiencia").val().trim();
+    var herramientas = $("#herramientas_experiencia").val().trim();
+
+    if(empresa == "" || puesto == "" || fingreso == ""){
+        if(!$('#actual_experiencia').is(":checked") && fsalida == ""){
+            showNotification("Faltan campos", "Ingrese todos los campos", "error");
+            return;
+        }
+    }
+
+    if ($('#actual_experiencia').is(":checked")){
+        fsalida = "Actual";
+    }
+
+    var id = "temp_"+index_experiencia;
+    experiencias.push({
+        id: id,
+        empresa: empresa,
+        puesto: puesto,
+        fingreso:fingreso,
+        fsalida:fsalida,
+        herramientas:herramientas
+    });
+
+    $("#empresa_experiencia").val("");
+    $("#puesto_experiencia").val("");
+    $("#fingreso_experiencia").val("");
+    $("#fsalida_experiencia").val("");
+    $('#actual_experiencia').removeAttr('checked');
+    $("#actual_experiencia").attr("checked", false);
+    $("#herramientas_experiencia").val("");
+
+    var experiencia = experienciaTemplate(empresa, puesto, fingreso, fsalida, herramientas, id);
+    $("#experiencias_container").prepend(experiencia);
+
+    $('#modal_nueva_experiencia').modal('toggle');
+}
+
+var id_experiencia = null;
+var elem_experiencia = null;
+function eliminarExperiencia(res_id, elem){
+    $("#modal_eliminar_experiencia").modal('toggle');
+    id_experiencia = res_id;
+    elem_experiencia = elem;
+}
+
+function confirmEliminarExperiencia(){
+    var index = experiencias.map(x => {
+        return x.id;
+    }).indexOf(id_experiencia);
+    
+    experiencias.splice(index, 1);
+    $(elem_experiencia).parent().parent().parent().remove();
+    $("#modal_eliminar_experiencia").modal('toggle');
+}
+
+var estudios = [];
+var index_estudios = 1;
+function agregarEstudio(){
+    var titulo = $("#titulo_estudio").val().trim();
+    var fecha  = $("#fecha_estudio").val().trim();
+    var link   = $("#link_estudio").val().trim();
+
+    if(titulo == "" || fecha == "" || link == ""){
+        showNotification("Faltan campos", "Ingrese todos los campos", "error");
+        return;
+    }
+
+    var id = "temp_"+index_estudios;
+    estudios.push({
+        id: id,
+        titulo: titulo,
+        fecha: fecha,
+        link:link
+    });
+
+    $("#titulo_estudio").val("");
+    $("#fecha_estudio").val("");
+    $("#link_estudio").val("");
+
+    var estudio = estudioTemplate(titulo, fecha, id);
+    $("#estudios_container").prepend(estudio);
+
+    $('#modal_nuevo_estudio').modal('toggle');
+}
+
+var id_estudio = null;
+var elem_estudio = null;
+function eliminarEstudio(res_id, elem){
+    $("#modal_eliminar_estudio").modal('toggle');
+    id_estudio   = res_id;
+    elem_estudio = elem;
+}
+
+function confirmEliminarEstudio(){
+    var index = estudios.map(x => {
+        return x.id;
+    }).indexOf(id_estudio);
+    
+    estudios.splice(index, 1);
+    $(elem_estudio).parent().parent().parent().remove();
+    $("#modal_eliminar_estudio").modal('toggle');
+}
+
+function showNotification(title, message, theme){
+    window.createNotification({
+        closeOnClick: true,
+        positionClass: 'nfc-top-right',
+        theme: theme
+    })({
+        title: title,
+        message: message,
+    });
+}

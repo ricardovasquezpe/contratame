@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link rel="stylesheet" href="../plugins/jquery.page/jquery.page.css">
         <link rel="stylesheet" href="../plugins/input_tag/tagsinput.css">
+        <link rel="stylesheet" type="text/css" href="../plugins/notify/notifications.css">
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     </head>
@@ -85,75 +86,15 @@
                                 <h3 class="color_gray">3/4</h3>
                             </div>
                         </div>
-                        <div class="row" style="margin-top: 5vh">
+                        <div class="row" id="experiencias_container">
                             <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
-                                <div class="card square">
-                                    <div class="card-body" style="padding-bottom: 0">
-                                        <div class="text-center">
-                                            <p class="exp_titulo">Fulltimeforce</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <p class="exp_desc">Fullstack Developer</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <p class="exp_fecha">Desde 28/08/2011 hasta Actual</p>
-                                        </div>
-                                        <div>
-                                            <p class="exp_titulo_leng">Lenguajes de programación / Herramientas</p>
-                                            <ul class="exp_desc_leng">
-                                                <li>Android</li>
-                                                <li>Firebase</li>
-                                                <li>Google Maps</li>
-                                                <li>Patron de arquitectura MVP</li>
-                                                <li>Más</li>
-                                            </ul> 
-                                        </div>
-                                    </div>
-                                    <div class="card-footer bg-transparent text-center">
-                                        <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
-                                        <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
-                                <div class="card square">
-                                    <div class="card-body" style="padding-bottom: 0">
-                                        <div class="text-center">
-                                            <p class="exp_titulo">Fulltimeforce</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <p class="exp_desc">Fullstack Developer</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <p class="exp_fecha">Desde 28/08/2011 hasta Actual</p>
-                                        </div>
-                                        <div>
-                                            <p class="exp_titulo_leng">Lenguajes de programación / Herramientas</p>
-                                            <ul class="exp_desc_leng">
-                                                <li>Android</li>
-                                                <li>Firebase</li>
-                                                <li>Google Maps</li>
-                                                <li>Patron de arquitectura MVP</li>
-                                                <li>Más</li>
-                                            </ul> 
-                                        </div>
-                                    </div>
-                                    <div class="card-footer bg-transparent text-center">
-                                        <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
-                                        <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
-                                <div class="card square text-center new_exp">
+                                <div class="card square text-center new_exp" onclick="$('#modal_nueva_experiencia').modal('toggle');">
                                     <div class="card-body" style="padding: 20px">
                                         <p style="font-size: 16px;margin:0; margin-bottom: 5px; color:#565555">Agregar Experiencia</p>
                                         <i class="fas fa-plus" style="font-size: 22px;color:#565555"></i>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </section>
@@ -170,74 +111,6 @@
                         </div>
                         <div class="row" id="expproyectos_container">
                             <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
-                                <div class="card square">
-                                    <div class="card-body" style="padding-bottom: 0">
-                                        <div class="text-center">
-                                            <p class="exp_titulo">ePaisa</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <p class="exp_desc">Backend Developer</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <p class="exp_fecha">Desde 28/08/2011 hasta Actual</p>
-                                        </div>
-                                        <div>
-                                            <p class="exp_titulo_leng">Sistema de pagos con POS y otros medios de pagos online con más de 1000 usuarios concurrentes.
-                                                Encargado del backend y de la creación de nuevos API's en base a microservicios
-                                            </p>
-                                        </div>
-                                        <div style="margin-top: 10px">
-                                            <p class="exp_titulo_leng">Referencias</p>
-                                            <ul class="exp_desc_leng" style="text-decoration: underline;cursor: pointer;">
-                                                <li>https://www.epaisa.com/</li>
-                                                <li>https://play.google.com/store/apps/details?id=com.epaisa.pos</li>
-                                                <li>https://apps.apple.com/ec/app/payments-by-epaisa/id1181308749</li>
-                                                <li>https://www.facebook.com/myepaisa/</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer bg-transparent text-center">
-                                        <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
-                                        <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
-                                <div class="card square">
-                                    <div class="card-body" style="padding-bottom: 0">
-                                        <div class="text-center">
-                                            <p class="exp_titulo">ePaisa</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <p class="exp_desc">Backend Developer</p>
-                                        </div>
-                                        <div class="text-center">
-                                            <p class="exp_fecha">Desde 28/08/2011 hasta Actual</p>
-                                        </div>
-                                        <div>
-                                            <p class="exp_titulo_leng">Sistema de pagos con POS y otros medios de pagos online con más de 1000 usuarios concurrentes.
-                                                Encargado del backend y de la creación de nuevos API's en base a microservicios
-                                            </p>
-                                        </div>
-                                        <div style="margin-top: 10px">
-                                            <p class="exp_titulo_leng">Referencias</p>
-                                            <ul class="exp_desc_leng" style="text-decoration: underline;cursor: pointer;">
-                                                <li>https://www.epaisa.com/</li>
-                                                <li>https://play.google.com/store/apps/details?id=com.epaisa.pos</li>
-                                                <li>https://apps.apple.com/ec/app/payments-by-epaisa/id1181308749</li>
-                                                <li>https://www.facebook.com/myepaisa/</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer bg-transparent text-center">
-                                        <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
-                                        <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
                                 <div class="card square text-center new_exp" onclick="$('#modal_agregar_proyecto').modal('toggle');">
                                     <div class="card-body" style="padding: 20px">
                                         <p style="font-size: 16px;margin:0; margin-bottom: 5px; color:#565555">Agregar Proyectos</p>
@@ -245,7 +118,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </section>
@@ -275,57 +147,9 @@
                             </div>
                             <div class="col-sm-12">
                                 <label class="color_gray">Estudios (No obligatorio)</label>
-                                <div class="row" style="margin-top: 5px">
+                                <div class="row" style="margin-top: 5px" id="estudios_container">
                                     <div class="col-sm-6 col-lg-3 col-md-4">
-                                        <div class="card square">
-                                            <div class="card-body" style="padding-bottom: 0">
-                                                <div class="text-center">
-                                                    <p class="exp_titulo">Scrum Master</p>
-                                                </div>
-                                                <div class="text-center">
-                                                    <p class="exp_desc">10/10/2019</p>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer bg-transparent text-center">
-                                                <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
-                                                <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-lg-3 col-md-4">
-                                        <div class="card square">
-                                            <div class="card-body" style="padding-bottom: 0">
-                                                <div class="text-center">
-                                                    <p class="exp_titulo">Devops Master</p>
-                                                </div>
-                                                <div class="text-center">
-                                                    <p class="exp_desc">10/10/2019</p>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer bg-transparent text-center">
-                                                <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
-                                                <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-lg-3 col-md-4">
-                                        <div class="card square">
-                                            <div class="card-body" style="padding-bottom: 0">
-                                                <div class="text-center">
-                                                    <p class="exp_titulo">ITIL Cert</p>
-                                                </div>
-                                                <div class="text-center">
-                                                    <p class="exp_desc">10/10/2019</p>
-                                                </div>
-                                            </div>
-                                            <div class="card-footer bg-transparent text-center">
-                                                <button type="button" class="btn btn-outline-primary btn-sm">Editar</button>
-                                                <button type="button" class="btn btn-outline-primary btn-sm">Eliminar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-lg-3 col-md-4">
-                                        <div class="card square text-center new_exp">
+                                        <div class="card square text-center new_exp" onclick="$('#modal_nuevo_estudio').modal('toggle');">
                                             <div class="card-body" style="padding: 20px">
                                                 <p style="font-size: 16px;margin:0; margin-bottom: 5px; color:#565555">Agregar Estudios</p>
                                                 <i class="fas fa-plus" style="font-size: 22px;color:#565555"></i>
@@ -435,8 +259,8 @@
                             </div>
                             <div class="col-sm-6 col-sm-push-6"></div>
                             <div class="col-sm-6">
-                                <input type="checkbox" class="checkbox-custom"/>
-                                <label class="form-check-label color_gray" for="actual" id="actual_proyecto">Actual</label>
+                                <input type="checkbox" class="checkbox-custom" id="actual_proyecto"/>
+                                <label class="form-check-label color_gray" for="actual">Actual</label>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
@@ -474,7 +298,7 @@
                     <div class="modal-footer" style="padding-top: 0px; justify-content:center">
                         <div>
                             <button type="button" class="btn btn-cerrar" style="height: 48px;font-size: 20px" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-delete" style="height: 48px;font-size: 20px" data-dismiss="modal">Eliminar</button>
+                            <button type="button" class="btn btn-delete" style="height: 48px;font-size: 20px" onclick="confirmEliminarProyecto()">Eliminar</button>
                         </div>
                     </div>
                 </div>
@@ -495,48 +319,42 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="correo" class="color_gray">Empresa</label>
-                                    <input type="text" class="form-control color_gray" id="correo">
+                                    <label for="empresa_experiencia" class="color_gray">Empresa</label>
+                                    <input type="text" class="form-control color_gray" id="empresa_experiencia">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="correo" class="color_gray">Puesto</label>
-                                    <input type="text" class="form-control color_gray" id="correo">
+                                    <label for="puesto_experiencia" class="color_gray">Puesto</label>
+                                    <input type="text" class="form-control color_gray" id="puesto_experiencia">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="fingreso" class="color_gray">Fecha Ingreso</label>
-                                    <input type="text" class="form-control color_gray" id="fingreso">
+                                    <label for="fingreso_experiencia" class="color_gray">Fecha Ingreso</label>
+                                    <input type="text" class="form-control color_gray" id="fingreso_experiencia" date-mask>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="fsalida" class="color_gray">Fecha Salida</label>
-                                    <input type="text" class="form-control color_gray" id="fsalida">
+                                    <label for="fsalida_experiencia" class="color_gray">Fecha Salida</label>
+                                    <input type="text" class="form-control color_gray" id="fsalida_experiencia" date-mask>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-sm-push-6"></div>
                             <div class="col-sm-6">
-                                <input type="checkbox" class="checkbox-custom"/>
-                                <label class="form-check-label color_gray" for="actual">Actual</label>
+                                <input type="checkbox" class="checkbox-custom" id="actual_experiencia"/>
+                                <label class="form-check-label color_gray" for="actual_experiencia">Actual</label>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="correo" class="color_gray">Descripción</label>
-                                    <textarea type="text" class="form-control color_gray" id="correo"></textarea>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="form-group">
-                                    <label for="correo" class="color_gray">Herramientas (Separados por comas)</label>
-                                    <textarea type="text" class="form-control color_gray" id="correo"></textarea>
+                                    <label for="herramientas_experiencia" class="color_gray">Herramientas (Separados por comas)</label>
+                                    <textarea type="text" class="form-control color_gray" id="herramientas_experiencia"></textarea>
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="text-center" style="width: 100%">
-                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" data-dismiss="modal">Agregar</button>
+                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" onclick="agregarExperiencia()">Agregar</button>
                                 </div>
                             </div>
                         </div>
@@ -558,7 +376,7 @@
                     <div class="modal-footer" style="padding-top: 0px; justify-content:center">
                         <div>
                             <button type="button" class="btn btn-cerrar" style="height: 48px;font-size: 20px" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-delete" style="height: 48px;font-size: 20px" data-dismiss="modal">Eliminar</button>
+                            <button type="button" class="btn btn-delete" style="height: 48px;font-size: 20px" onclick="confirmEliminarExperiencia()">Eliminar</button>
                         </div>
                     </div>
                 </div>
@@ -579,25 +397,25 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="correo" class="color_gray">Titulo</label>
-                                    <input type="text" class="form-control color_gray" id="correo">
+                                    <label for="titulo_estudio" class="color_gray">Titulo</label>
+                                    <input type="text" class="form-control color_gray" id="titulo_estudio">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="correo" class="color_gray">Fecha Obtención</label>
-                                    <input type="text" class="form-control color_gray" id="correo">
+                                    <label for="fecha_estudio" class="color_gray">Fecha Obtención</label>
+                                    <input type="text" class="form-control color_gray" id="fecha_estudio" date-mask>
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="correo" class="color_gray">Link de Referencia</label>
-                                    <textarea type="text" class="form-control color_gray" id="correo"></textarea>
+                                    <label for="link_estudio" class="color_gray">Link de Referencia</label>
+                                    <textarea type="text" class="form-control color_gray" id="link_estudio"></textarea>
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="text-center" style="width: 100%">
-                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" data-dismiss="modal">Agregar</button>
+                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" onclick="agregarEstudio()">Agregar</button>
                                 </div>
                             </div>
                         </div>
@@ -619,7 +437,7 @@
                     <div class="modal-footer" style="padding-top: 0px; justify-content:center">
                         <div>
                             <button type="button" class="btn btn-cerrar" style="height: 48px;font-size: 20px" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-delete" style="height: 48px;font-size: 20px" data-dismiss="modal">Eliminar</button>
+                            <button type="button" class="btn btn-delete" style="height: 48px;font-size: 20px" onclick="confirmEliminarEstudio()">Eliminar</button>
                         </div>
                     </div>
                 </div>
@@ -633,6 +451,7 @@
     <script src="../plugins/jquery.page/jquery.page.min.js"></script>
     <script src="../plugins/input_tag/tagsinput.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="../plugins/notify/notifications.js"></script>
     <script src="../js/generate/template.js"></script>
     <script src="../js/generate/generate.js"></script>
 </html>
