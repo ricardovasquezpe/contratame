@@ -88,7 +88,7 @@
                         </div>
                         <div class="row" id="experiencias_container">
                             <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
-                                <div class="card square text-center new_exp" onclick="$('#modal_nueva_experiencia').modal('toggle');">
+                                <div class="card square text-center new_exp" onclick="openNuevaExperiencia()">
                                     <div class="card-body" style="padding: 20px">
                                         <p style="font-size: 16px;margin:0; margin-bottom: 5px; color:#565555">Agregar Experiencia</p>
                                         <i class="fas fa-plus" style="font-size: 22px;color:#565555"></i>
@@ -111,7 +111,7 @@
                         </div>
                         <div class="row" id="expproyectos_container">
                             <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
-                                <div class="card square text-center new_exp" onclick="$('#modal_agregar_proyecto').modal('toggle');$('#btn_agregar_proyecto').html('Agregar');">
+                                <div class="card square text-center new_exp" onclick="openAgregarProyecto()">
                                     <div class="card-body" style="padding: 20px">
                                         <p style="font-size: 16px;margin:0; margin-bottom: 5px; color:#565555">Agregar Proyectos</p>
                                         <i class="fas fa-plus" style="font-size: 22px;color:#565555"></i>
@@ -149,7 +149,7 @@
                                 <label class="color_gray">Estudios (No obligatorio)</label>
                                 <div class="row" style="margin-top: 5px" id="estudios_container">
                                     <div class="col-sm-6 col-lg-3 col-md-4">
-                                        <div class="card square text-center new_exp" onclick="$('#modal_nuevo_estudio').modal('toggle');">
+                                        <div class="card square text-center new_exp" onclick="openNuevoEstudio()">
                                             <div class="card-body" style="padding: 20px">
                                                 <p style="font-size: 16px;margin:0; margin-bottom: 5px; color:#565555">Agregar Estudios</p>
                                                 <i class="fas fa-plus" style="font-size: 22px;color:#565555"></i>
@@ -354,7 +354,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="text-center" style="width: 100%">
-                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" onclick="agregarExperiencia()">Agregar</button>
+                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" id="btn_nueva_experiencia" onclick="agregarExperiencia()">Agregar</button>
                                 </div>
                             </div>
                         </div>
@@ -415,7 +415,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="text-center" style="width: 100%">
-                                    <button type="button" class="btn btn-primary" style="width: 100%;height: 48px;font-size: 18px" onclick="agregarEstudio()">Agregar</button>
+                                    <button type="button" class="btn btn-primary" id="btn_nuevo_estudio" style="width: 100%;height: 48px;font-size: 18px" onclick="agregarEstudio()">Agregar</button>
                                 </div>
                             </div>
                         </div>

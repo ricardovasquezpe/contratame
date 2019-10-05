@@ -87,7 +87,7 @@ function estudioTemplate(titulo, fecha, id){
                 </div>
             </div>
             <div class="card-footer bg-transparent text-center">
-                <button type="button" class="btn btn-outline-primary btn-sm" onclick="editarExperiencia('` + id + `', this)">Editar</button>
+                <button type="button" class="btn btn-outline-primary btn-sm" onclick="editarEstudio('` + id + `', this)">Editar</button>
                 <button type="button" class="btn btn-outline-primary btn-sm" onclick="eliminarEstudio('` + id + `', this)">Eliminar</button>
             </div>
         </div>

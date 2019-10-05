@@ -103,6 +103,44 @@ function moveItem() {
     nextTip();
 }
 
+function openAgregarProyecto(){
+    id_proyecto = null;
+    $("#nombre_proyecto").val("");
+    $("#puesto_proyecto").val("");
+    $("#fcomienzo_proyecto").val("");
+    $("#fterminado_proyecto").val("");
+    $("#actual_proyecto").prop('checked', false);
+    $("#descripcion_proyecto").val("");
+    $("#referencias_proyecto").val("");
+    $('#fterminado_proyecto').prop('disabled', false);
+
+    $('#modal_agregar_proyecto').modal('toggle');
+    $('#btn_agregar_proyecto').html('Agregar');
+}
+
+function openNuevaExperiencia(){
+    id_experiencia = null;
+    $("#empresa_experiencia").val("");
+    $("#puesto_experiencia").val("");
+    $("#fingreso_experiencia").val("");
+    $("#fsalida_experiencia").val("");
+    $("#actual_experiencia").prop('checked', false);
+    $("#herramientas_experiencia").val("");
+
+    $('#modal_nueva_experiencia').modal('toggle');
+    $('#btn_nueva_experiencia').html('Agregar');
+}
+
+function openNuevoEstudio(){
+    id_estudio = null;
+    $("#titulo_estudio").val("");
+    $("#fecha_estudio").val("");
+    $("#link_estudio").val("");
+
+    $('#modal_nuevo_estudio').modal('toggle');
+    $("#btn_nuevo_estudio").html("Agregar");
+}
+
 var proyectos = [];
 $('#actual_proyecto').change(function () {
     if ($('#actual_proyecto').is(":checked")){
@@ -235,6 +273,8 @@ function confirmEditarProyecto(){
         referencias:referencias
     });
 
+    index_proyecto++;
+
     id_proyecto = null;
 
     $("#nombre_proyecto").val("");
@@ -273,6 +313,10 @@ $('#actual_experiencia').change(function () {
 
 var index_experiencia = 1;
 function agregarExperiencia(){
+    if(id_experiencia != null){
+        confirmEditarExperiencia();
+        return;
+    }
     var empresa     = $("#empresa_experiencia").val().trim();
     var puesto      = $("#puesto_experiencia").val().trim();
     var fingreso    = $("#fingreso_experiencia").val().trim();
@@ -304,8 +348,7 @@ function agregarExperiencia(){
     $("#puesto_experiencia").val("");
     $("#fingreso_experiencia").val("");
     $("#fsalida_experiencia").val("");
-    $('#actual_experiencia').removeAttr('checked');
-    $("#actual_experiencia").attr("checked", false);
+    $("#actual_experiencia").prop('checked', false);
     $("#herramientas_experiencia").val("");
 
     var experiencia = experienciaTemplate(empresa, puesto, fingreso, fsalida, herramientas, id);
@@ -333,9 +376,91 @@ function confirmEliminarExperiencia(){
     $("#modal_eliminar_experiencia").modal('toggle');
 }
 
+function editarExperiencia(res_id, elem){
+    id_experiencia   = res_id;
+    elem_experiencia = elem;
+    var experiencia = experiencias.find(item => item.id === id_experiencia);
+
+    $("#empresa_experiencia").val(experiencia["empresa"]);
+    $("#puesto_experiencia").val(experiencia["puesto"]);
+    $("#fingreso_experiencia").val(experiencia["fingreso"]);
+    $("#herramientas_experiencia").val(experiencia["herramientas"]);
+
+    if(experiencia["fsalida"] == "Actual"){
+        $('#fsalida_experiencia').prop('disabled', true);
+        $("#fsalida_experiencia").val("");
+        $("#actual_experiencia").prop('checked', true);
+    }else{
+        $('#fsalida_experiencia').prop('disabled', false);
+        $("#fsalida_experiencia").val(experiencia["fsalida"]);
+        $("#actual_experiencia").prop('checked', false);
+    }
+
+    $("#btn_nueva_experiencia").html("Editar");
+    $("#modal_nueva_experiencia").modal('toggle');
+}
+
+function confirmEditarExperiencia(){
+    var index = experiencias.map(x => {
+        return x.id;
+    }).indexOf(id_experiencia);
+    
+    experiencias.splice(index, 1);
+
+    var empresa     = $("#empresa_experiencia").val().trim();
+    var puesto      = $("#puesto_experiencia").val().trim();
+    var fingreso    = $("#fingreso_experiencia").val().trim();
+    var fsalida     = $("#fsalida_experiencia").val().trim();
+    var herramientas = $("#herramientas_experiencia").val().trim();
+
+    if ($('#actual_experiencia').is(":checked")){
+        fsalida = "Actual";
+    }
+
+    var id = "temp_"+index_experiencia;
+    experiencias.push({
+        id: id,
+        empresa: empresa,
+        puesto: puesto,
+        fingreso:fingreso,
+        fsalida:fsalida,
+        herramientas:herramientas
+    });
+    
+    index_experiencia++;
+
+    id_experiencia = null;
+
+    $("#empresa_experiencia").val("");
+    $("#puesto_experiencia").val("");
+    $("#fingreso_experiencia").val("");
+    $("#fsalida_experiencia").val("");
+    $("#actual_experiencia").prop('checked', false);
+    $("#herramientas_experiencia").val("");
+
+    var parent = $(elem_experiencia).parent().parent().find(".card-body");
+    $(parent).find(".exp_titulo").text(empresa);
+    $(parent).find(".exp_desc").text(puesto);
+    $(parent).find(".exp_fecha").text("Desde " + fingreso + " hasta " + fsalida);
+    $(elem_experiencia).attr("onclick", "editarExperiencia('" + id + "', this)");
+
+    var links = herramientas.split(",");
+    var herramientas = "";
+    links.forEach(element => {
+        herramientas += "<li>" + element + "</li>";
+    });
+    $(parent).find(".exp_desc_leng").html(herramientas);
+
+    $("#modal_nueva_experiencia").modal('toggle');
+}
+
 var estudios = [];
 var index_estudios = 1;
 function agregarEstudio(){
+    if(id_estudio != null){
+        confirmEditarEstudio();
+        return;
+    }
     var titulo = $("#titulo_estudio").val().trim();
     var fecha  = $("#fecha_estudio").val().trim();
     var link   = $("#link_estudio").val().trim();
@@ -380,6 +505,54 @@ function confirmEliminarEstudio(){
     estudios.splice(index, 1);
     $(elem_estudio).parent().parent().parent().remove();
     $("#modal_eliminar_estudio").modal('toggle');
+}
+
+function editarEstudio(res_id, elem){
+    id_estudio   = res_id;
+    elem_estudio = elem;
+    var estudio = estudios.find(item => item.id === id_estudio);
+
+    $("#titulo_estudio").val(estudio["titulo"]);
+    $("#fecha_estudio").val(estudio["fecha"]);
+    $("#link_estudio").val(estudio["link"]);
+
+    $("#btn_nuevo_estudio").html("Editar");
+    $("#modal_nuevo_estudio").modal('toggle');
+}
+
+function confirmEditarEstudio(){
+    var index = estudios.map(x => {
+        return x.id;
+    }).indexOf(id_estudio);
+    
+    estudios.splice(index, 1);
+
+    var titulo = $("#titulo_estudio").val().trim();
+    var fecha  = $("#fecha_estudio").val().trim();
+    var link   = $("#link_estudio").val().trim();
+
+    var id = "temp_"+index_estudios;
+    estudios.push({
+        id: id,
+        titulo: titulo,
+        fecha: fecha,
+        link:link
+    });
+    
+    index_estudios++;
+
+    id_estudio = null;
+
+    $("#titulo_estudio").val("");
+    $("#fecha_estudio").val("");
+    $("#link_estudio").val("");
+
+    var parent = $(elem_estudio).parent().parent().find(".card-body");
+    $(parent).find(".exp_titulo").text(titulo);
+    $(parent).find(".exp_desc").text(fecha);
+    $(elem_estudio).attr("onclick", "editarEstudio('" + id + "', this)");
+
+    $("#modal_nuevo_estudio").modal('toggle');
 }
 
 function showNotification(title, message, theme){
