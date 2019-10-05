@@ -56,18 +56,50 @@ function siguiente(){
     $("#siguiente").val("Siguiente");
     if(index_page == 1){
         if(!validateEmail($("#correo").val())){
+            showNotification("Correo Invalido", "Ingrese un correo valido", "error");
             //return;
         }
 
         if($("#telefono").val().length != 9){
+            showNotification("Teléfono Invalido", "Ingrese un número valido", "error");
             //return;
         }
+        var data = {
+            nombres : $("#nombres").val(),
+            apellidos : $("#apellidos").val(),
+            correo : $("#correo").val(),
+            telefono : $("#telefono").val(),
+            departamento : $("#departamento").val(),
+            distrito : $("#distrito").val()
+        };
+        infobasica(data);
     }else if(index_page == 2){
-
+        if(proyectos.length == 0){
+            showNotification("Faltan proyectos", "Ingrese por lo menos 1 proyecto (Universidad o de trabajo)", "error");
+            //return;
+        }
     }else if(index_page == 3){
+        if(experiencias.length == 0){
+            showNotification("Un Consejo", "Si tienes experiencias laborales agregalas y has notar más tu CV", "info");
+            //return;
+        }
         $("#siguiente").html("Terminar");
     }else if(index_page == 4){
+        var skills = $("#skills").tagsinput('items');
+        if(skills.length == 0){
+            showNotification("Faltan skills", "Ingrese por lo menos 5 skills", "error");
+            return;
+        }
+        var idiomas = $("#idiomas").tagsinput('items');
+        if(idiomas.length == 0){
+            showNotification("Faltan idiomas", "Ingrese por lo menos 1 Idioma", "error");
+            return;
+        }
+
+        var skills  = $("#skills").tagsinput('items');
+        var idiomas = $("#idiomas").tagsinput('items');
         $('#modal_terminando').modal('toggle');
+        generateCV(proyectos, experiencias, skills, idiomas, estudios);
         setTimeout(function(){ 
             $("#cv_cargando").hide();
             $("#cv_completo").show(); 

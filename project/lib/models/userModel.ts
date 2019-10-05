@@ -3,19 +3,15 @@ import * as mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 export const UserSchema = new Schema({
-    name		 : {
-        type: String,
-        required: 'Enter a first name'
-    },
-    lastname	 : {
-        type: String,
-        required: 'Enter a last name'
-    },
-    username	 : { type: String, required: true, unique: true },
+    nombres		 : String,
+    apellidos	 : String,
+    usuario	     : String,
     password	 : String,
-    email		 : { type: String, required: true, unique: true },
-    type		 : String,
-    birthdate	 : Date,
+    correo		 : { type: String, required: true, unique: true },
+    fnacimiento	 : Date,
+    departamento : String,
+    distrito     : String,
+    telefono     : String,
     created_at   : Date,
     updated_at   : Date
 });

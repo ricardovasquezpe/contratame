@@ -41,17 +41,17 @@ export class UserController{
 
         req.body.created_at = new Date();
         var newUser = User(req.body);
-        newUser.save(function(err) {
+        newUser.save(function(err, user) {
         if (err){
             if(err.code == 11000){
                 res.json(
-                {"status" : false,
-                "data"   : "user already created"}
+                    {"status" : false,
+                    "data"   : "user already created"}
                 );
             }else{
-            res.json(
-                {"status" : false,
-                "data"   : "Weird error"}
+                res.json(
+                    {"status" : false,
+                    "data"   : "Weird error"}
                 );
             }
             return;
@@ -59,7 +59,7 @@ export class UserController{
 
         res.json(
             {"status" : true,
-            "data"   : 'User created!'}
+            "data"   : user.id}
         );
         return;
 
