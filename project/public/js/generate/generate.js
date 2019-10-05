@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $(".screen").page();
     tipsInterval = setInterval(moveItem,12000);
-    //$('#modal_bienvenida').modal('toggle');
+    $('#modal_bienvenida').modal('toggle');
     $('input[date-mask]').mask('00/00/0000');
 });
 
@@ -57,12 +57,12 @@ function siguiente(){
     if(index_page == 1){
         if(!validateEmail($("#correo").val())){
             showNotification("Correo Invalido", "Ingrese un correo valido", "error");
-            //return;
+            return;
         }
 
         if($("#telefono").val().length != 9){
             showNotification("Teléfono Invalido", "Ingrese un número valido", "error");
-            //return;
+            return;
         }
         var data = {
             nombres : $("#nombres").val(),
@@ -76,12 +76,11 @@ function siguiente(){
     }else if(index_page == 2){
         if(proyectos.length == 0){
             showNotification("Faltan proyectos", "Ingrese por lo menos 1 proyecto (Universidad o de trabajo)", "error");
-            //return;
+            return;
         }
     }else if(index_page == 3){
         if(experiencias.length == 0){
             showNotification("Un Consejo", "Si tienes experiencias laborales agregalas y has notar más tu CV", "info");
-            //return;
         }
         $("#siguiente").html("Terminar");
     }else if(index_page == 4){
@@ -95,16 +94,8 @@ function siguiente(){
             showNotification("Faltan idiomas", "Ingrese por lo menos 1 Idioma", "error");
             return;
         }
-
-        var skills  = $("#skills").tagsinput('items');
-        var idiomas = $("#idiomas").tagsinput('items');
         $('#modal_terminando').modal('toggle');
         generateCV(proyectos, experiencias, skills, idiomas, estudios);
-        setTimeout(function(){ 
-            $("#cv_cargando").hide();
-            $("#cv_completo").show(); 
-            $('#ver_mi_cv').prop('disabled', false);
-        }, 5000);
         return;
     }
     $('#atras').prop('disabled', false);
@@ -585,6 +576,48 @@ function confirmEditarEstudio(){
     $(elem_estudio).attr("onclick", "editarEstudio('" + id + "', this)");
 
     $("#modal_nuevo_estudio").modal('toggle');
+}
+
+function validarLink(){
+    var link = $("#linkCV").val();
+    if(link.length > 10){
+        $('#validar_cv').prop('disabled', false);
+    }else{
+        $('#validar_cv').prop('disabled', true);
+    }
+}
+
+function validateCVLink(){
+    var link = $("#linkCV").val();
+    if(link.indexOf(' ')>=0 || link.indexOf('.')>=0 || link.indexOf('/')>=0 || link.indexOf('?')>=0){
+        showNotification("Link no admitido", "El link solo puede contener letras o guiones", "info");
+        return;
+    }
+    validarLinkCV(link);
+}
+
+function verMiCv(){
+    var link = $("#linkCV").val();
+    location.href = "http://localhost:3000/micv/" + link;
+}
+
+function changeDepartamento(){
+    var id_dept = $("#departamento").val();
+    var provincias_result = $.grep(temp_provincias, function (obj) {
+        return obj[id_dept];
+    });
+    var provincias_result_array = provincias_result[0][id_dept];
+    var $distritos_select = $("#distrito");
+    $distritos_select.html("");
+    provincias_result_array.forEach(element => {
+        distritos_encontrados = $.grep(temp_distritos, function (obj) {
+            return obj[element.codprovincia];
+        });
+        distritos = distritos_encontrados[0][Object.keys(distritos_encontrados[0])[0]];
+        distritos.forEach(element => {
+            $distritos_select.append($("<option />").val(element.coddistrito).text(element.distrito));
+        });
+    });
 }
 
 function showNotification(title, message, theme){

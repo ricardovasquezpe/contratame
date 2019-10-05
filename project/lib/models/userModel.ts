@@ -8,10 +8,16 @@ export const UserSchema = new Schema({
     usuario	     : String,
     password	 : String,
     correo		 : { type: String, required: true, unique: true },
-    fnacimiento	 : Date,
     departamento : String,
     distrito     : String,
     telefono     : String,
+    proyectos    : { type : Array , "default" : [] },
+    experiencias : { type : Array , "default" : [] },
+    skills       : { type : Array , "default" : [] },
+    idiomas      : { type : Array , "default" : [] },
+    estudios     : { type : Array , "default" : [] },
+    link         : String,
+    fnacimiento	 : Date,
     created_at   : Date,
     updated_at   : Date
 });

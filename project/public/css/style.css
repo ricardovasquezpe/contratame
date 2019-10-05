@@ -332,3 +332,7 @@ select{
     border: 1px solid #6c2794;
     border-radius: 2px;
 }
+
+.input-group-text{
+    border-radius: 0px;
+}

@@ -55,11 +55,9 @@
                             <div class="col-sm-6 col-lg-4">
                                 <div class="form-group">
                                     <label for="departamento" class="color_gray">Departamento</label>
-                                    <select class="form-control" id="departamento" mandatory onchange="validarCampos()">
+                                    <select class="form-control" id="departamento" mandatory onchange="validarCampos();changeDepartamento();">
                                         <option value="" selected disabled hidden>Escoge</option>
-                                        <option value="1">Lima</option>
-                                        <option value="2">Ayacucho</option>
-                                        <option value="3">La Libertad</option>
+                                        <option value="01">Amazonas</option><option value="02">Ancash</option><option value="03">Apurimac</option><option value="04">Arequipa</option><option value="05">Ayacucho</option><option value="06">Cajamarca</option><option value="07">Cusco</option><option value="08">Huancavelica</option><option value="09">Huanuco</option><option value="10">Ica</option><option value="11">Junín</option><option value="12">La Libertad</option><option value="13">Lambayeque</option><option value="14">Lima</option><option value="15">Loreto</option><option value="16">Madre De Dios</option><option value="17">Moquegua</option><option value="18">Pasco</option><option value="19">Piura</option><option value="20">Puno</option><option value="21">San Martin</option><option value="22">Tacna</option><option value="23">Tumbes</option><option value="24">Ucayali</option>
                                     </select>
                                 </div>
                             </div>
@@ -68,8 +66,7 @@
                                     <label for="distrito" class="color_gray">Distrito</label>
                                     <select class="form-control" mandatory id="distrito" onchange="validarCampos()">
                                         <option value="" selected disabled hidden>Escoge</option>
-                                        <option value="1">San Isidro</option>
-                                        <option value="2">La Molina</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -166,7 +163,7 @@
         </div>
         <footer class="footer">
             <button type="button" class="btn btn-primary btn_direccion" id="atras" onclick="atras()" style="float: left;" disabled>Atras</button>
-            <button type="button" class="btn btn-primary btn_direccion" id="siguiente" onclick="siguiente()">Siguiente</button>
+            <button type="button" class="btn btn-primary btn_direccion" id="siguiente" onclick="siguiente()" disabled>Siguiente</button>
         </footer>
 
         <div class="modal fade" id="modal_bienvenida" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -190,7 +187,7 @@
 
         <div class="modal fade" id="modal_terminando" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <div class="modal-content" style="padding-top: 15px;padding-bottom: 10px;">
+                <div class="modal-content" style="padding-top: 15px;">
                     <div class="modal-body">
                         <div class="text-center">
                             <div id="cv_cargando">
@@ -200,7 +197,27 @@
                                     </div>
                                 </div>
                                 <p class="color_gray" style="margin-top: 20px;font-weight: bold; margin-bottom: 0;">Estamos generando tu CV online</p>
-                                <p class="color_gray" style="font-size: 14px;">En unos segundos te redirigiremos a tu CV y podras compartirlo con las empresas y/o startups</p>    
+                                <p class="color_gray" style="font-size: 14px;">En unos segundos tendras tu CV personalizado y podras compartirlo con las empresas y/o startups</p>    
+                            </div>
+                            <div id="cv_link" style="display: none">
+                                <div class="d-flex justify-content-center">
+                                    <div class="d-flex justify-content-center" style="margin-bottom: 10px">
+                                        <i class="fas fa-link" style="font-size: 100px; color:#6c2794"></i>
+                                    </div>
+                                </div>
+                                <p class="color_gray" style="margin-top: 20px;font-weight: bold; margin-bottom: 6px;">¿Como quisieras que se vea tu link?</p>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon3">https://www.contrateme/cv/</span>
+                                    </div>
+                                    <input type="text" class="form-control" id="linkCV" onkeyup="validarLink()">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <div class="text-center" style="width: 100%">
+                                        <button type="button" id="validar_cv" class="btn btn-primary" style="width: 48%;height: 48px;font-size: 20px" onclick="validateCVLink()" disabled>Verificar</button>
+                                    </div>
+                                </div>
                             </div>
                             <div style="display: none" id="cv_completo">
                                 <div class="d-flex justify-content-center" style="margin-bottom: 30px">
@@ -208,13 +225,13 @@
                                 </div>
                                 <p class="color_gray" style="margin-top: 20px;font-weight: bold; margin-bottom: 0;">Ya esta todo listo!</p>
                                 <p class="color_gray" style="font-size: 14px;">Da click en el boton, ve tu nuevo CV online y compartelo!</p>    
+                                <div class="modal-footer">
+                                    <div class="text-center" style="width: 100%">
+                                        <button type="button" id="ver_mi_cv" class="btn btn-primary" style="width: 48%;height: 48px;font-size: 20px" onclick="verMiCv()">Ver mi CV</button>
+                                    </div>
+                                </div>
                             </div>
                             
-                        </div>
-                    </div>
-                    <div class="modal-footer" style="padding-top: 0px">
-                        <div class="text-center" style="width: 100%">
-                            <button type="button" id="ver_mi_cv" class="btn btn-primary" style="width: 48%;height: 48px;font-size: 20px" data-dismiss="modal" disabled>Ver mi CV</button>
                         </div>
                     </div>
                 </div>
@@ -452,6 +469,7 @@
     <script src="../plugins/input_tag/tagsinput.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <script src="../plugins/notify/notifications.js"></script>
+    <script src="../js/generate/ubigeo.js"></script>
     <script src="../js/generate/template.js"></script>
     <script src="../js/generate/call.js"></script>
     <script src="../js/generate/generate.js"></script>

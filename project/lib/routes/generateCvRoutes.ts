@@ -11,12 +11,12 @@ export class GenerateCvRoutes {
     
     public routes(app): void {
 
-        app.route('/cv/generate')
+        app.route('/cv/generar')
         .get((req: Request, res: Response) => {            
             res.render('generate/index', { title: 'Express' });
         });
 
-        app.route('/cv/generate/infobasica').post([
+        app.route('/cv/generar/infobasica').post([
             check('nombres').isLength({ min: 1, max : 20 }).withMessage('Nombres field is not correct'),
             check('apellidos').isLength({ min: 1, max : 20 }).withMessage('Apellidos field is not correct'),
             check('correo').isLength({ min: 1 }).isEmail().withMessage('Correo field is not correct'),
@@ -25,7 +25,11 @@ export class GenerateCvRoutes {
             check('distrito').isLength({ min: 1 }).withMessage('Distrito field is not correct')
         ], this.userController.register);
 
-        app.route('/cv/generate/generatecv').post(this.cvController.saveDataCV);
+        app.route('/cv/generar/generarcv').post(this.cvController.saveDataCV);
+
+        app.route('/cv/generar/validarLinkCv').post([
+            check('link').isLength({ min: 1, max : 30 }).withMessage('Link field is not correct')
+        ], this.cvController.validateLink);
 
     }
 }

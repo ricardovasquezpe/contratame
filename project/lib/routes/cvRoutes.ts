@@ -4,7 +4,7 @@ export class CvRoutes {
     
     public routes(app): void {
 
-        app.route('/cv')
+        app.route('/micv/:person')
         .get((req: Request, res: Response) => {            
             res.render('cv/cv', { title: 'Express' });
         });
