@@ -65,11 +65,11 @@ function siguiente(){
             return;
         }
         var data = {
-            nombres       : $("#nombres").val(),
-            apellidos     : $("#apellidos").val(),
-            correo        : $("#correo").val(),
-            telefono      : $("#telefono").val(),
-            fnacimiento   : $("#fnacimiento").val()
+            nombres       : toCapital($("#nombres").val().trim()),
+            apellidos     : toCapital($("#apellidos").val().trim()),
+            correo        : $("#correo").val().trim(),
+            telefono      : $("#telefono").val().trim(),
+            fnacimiento   : $("#fnacimiento").val().trim()
         };
         infobasica(data);
     }else if(index_page == 2){
@@ -343,7 +343,7 @@ function agregarExperiencia(){
         confirmEditarExperiencia();
         return;
     }
-    var empresa     = $("#empresa_experiencia").val().trim();
+    var empresa     = toCapital($("#empresa_experiencia").val().trim());
     var puesto      = $("#puesto_experiencia").val().trim();
     var fingreso    = $("#fingreso_experiencia").val().trim();
     var fsalida     = $("#fsalida_experiencia").val().trim();
@@ -433,7 +433,7 @@ function confirmEditarExperiencia(){
     
     experiencias.splice(index, 1);
 
-    var empresa     = $("#empresa_experiencia").val().trim();
+    var empresa     = toCapital($("#empresa_experiencia").val().trim());
     var puesto      = $("#puesto_experiencia").val().trim();
     var fingreso    = $("#fingreso_experiencia").val().trim();
     var fsalida     = $("#fsalida_experiencia").val().trim();
@@ -487,7 +487,7 @@ function agregarEstudio(){
         confirmEditarEstudio();
         return;
     }
-    var titulo = $("#titulo_estudio").val().trim();
+    var titulo = toCapital($("#titulo_estudio").val().trim());
     var fecha  = $("#fecha_estudio").val().trim();
     var link   = $("#link_estudio").val().trim();
 
@@ -553,7 +553,7 @@ function confirmEditarEstudio(){
     
     estudios.splice(index, 1);
 
-    var titulo = $("#titulo_estudio").val().trim();
+    var titulo = toCapital($("#titulo_estudio").val());
     var fecha  = $("#fecha_estudio").val().trim();
     var link   = $("#link_estudio").val().trim();
 
@@ -632,4 +632,13 @@ function showNotification(title, message, theme){
         title: title,
         message: message,
     });
+}
+
+function toCapital(palabras){
+    return palabras.toLowerCase()
+    .split(' ')
+    .map(function(word) {
+        return word[0].toUpperCase() + word.substr(1);
+    })
+    .join(' ');
 }

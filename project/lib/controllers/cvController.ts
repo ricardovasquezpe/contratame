@@ -13,11 +13,11 @@ export class CvController{
         var skills    = JSON.parse(req.body.skills);
         var idiomas   = JSON.parse(req.body.idiomas);
         if(id_user == null || Object.keys(proyectos).length == 0 || Object.keys(skills).length == 0 || Object.keys(idiomas).length == 0){
-            /*res.json(
+            res.json(
                 {"status" : false,
                  "data"   : 'Empty data'}
             );
-            return;*/
+            return;
         }
         var experiencias = JSON.parse(req.body.experiencias);
         var estudios     = JSON.parse(req.body.estudios);
@@ -93,4 +93,21 @@ export class CvController{
             });
        });
     }
+
+    public getCVData(req: Request, res: Response){
+        User.findOne({ link : req.params.person}, { '_id': 0 }, function(err, user) {
+            if(!user){
+              res.json(
+                {"status" : false,
+                 "data"   : 'User not found'}
+              );
+              return;
+            }
+
+            res.render('cv/cv', { 
+                title: user.apellidos + " " + user.nombres
+            });
+        });
+    }
+
 }

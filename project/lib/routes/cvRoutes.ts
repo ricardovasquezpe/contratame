@@ -1,13 +1,13 @@
 import {Request, Response, NextFunction} from "express";
+import { CvController } from "../controllers/cvController";
 
 export class CvRoutes { 
+
+    public cvController: CvController = new CvController();
     
     public routes(app): void {
 
-        app.route('/micv/:person')
-        .get((req: Request, res: Response) => {            
-            res.render('cv/cv', { title: 'Express' });
-        });
+        app.route('/micv/:person').get(this.cvController.getCVData);
 
     }
 }

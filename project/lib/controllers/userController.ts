@@ -30,7 +30,7 @@ export class UserController{
                "token"  : token}
             );
             return;
-          });
+        });
     }
 
     public register(req: Request, res: Response){
@@ -39,36 +39,32 @@ export class UserController{
             return res.status(422).json({ errors: errors.array() })
         }
 
-        req.body.created_at = new Date();
+        req.body.created_at  = new Date();
         req.body.fnacimiento = new Date(req.body.fnacimiento);
+
         var newUser = User(req.body);
         newUser.save(function(err, user) {
-        if (err){
-            if(err.code == 11000){
-                res.json(
-                    {"status" : false,
-                    "data"   : "user already created"}
-                );
-            }else{
-                res.json(
-                    {"status" : false,
-                    "data"   : "Weird error"}
-                );
+            if (err){
+                if(err.code == 11000){
+                    res.json(
+                        {"status" : false,
+                        "data"   : "user already created"}
+                    );
+                }else{
+                    res.json(
+                        {"status" : false,
+                        "data"   : "Weird error"}
+                    );
+                }
+                return;
             }
+
+            res.json(
+                {"status" : true,
+                "data"   : user.id}
+            );
             return;
-        }
-
-        res.json(
-            {"status" : true,
-            "data"   : user.id}
-        );
-        return;
-
         });
-    }
-
-    public suma(a , b){
-        return a + b;
     }
 
 }
