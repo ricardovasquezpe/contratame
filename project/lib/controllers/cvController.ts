@@ -22,6 +22,9 @@ export class CvController{
         var experiencias = JSON.parse(req.body.experiencias);
         var estudios     = JSON.parse(req.body.estudios);
         var links_ref    = req.body.links_ref;
+        var departamento = req.body.departamento;
+        var distrito     = req.body.distrito;
+        var tcontrato    = req.body.tcontrato;
 
         var updateData = {
             proyectos    : proyectos,
@@ -29,7 +32,10 @@ export class CvController{
             skills       : skills,
             idiomas      : idiomas,
             estudios     : estudios,
-            links_ref    : links_ref
+            links_ref    : links_ref,
+            departamento : departamento,
+            distrito     : distrito,
+            tcontrato    : tcontrato
         };
 
         User.findByIdAndUpdate(id_user, updateData, function(err, userFound) {

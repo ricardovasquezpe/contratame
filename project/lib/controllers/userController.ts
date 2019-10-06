@@ -40,6 +40,7 @@ export class UserController{
         }
 
         req.body.created_at = new Date();
+        req.body.fnacimiento = new Date(req.body.fnacimiento);
         var newUser = User(req.body);
         newUser.save(function(err, user) {
         if (err){

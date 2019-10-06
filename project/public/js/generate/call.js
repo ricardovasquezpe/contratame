@@ -11,13 +11,16 @@ function infobasica(data){
     });
 }
 
-function generateCV(proyectos, experiencias, skills, idiomas, links_ref, estudios){
+function generateCV(proyectos, experiencias, skills, idiomas, links_ref, departamento, distrito, tcontrato, estudios){
     var data = {
         proyectos    : JSON.stringify(proyectos),
         experiencias : JSON.stringify(experiencias),
         skills       : JSON.stringify(skills),
         idiomas      : JSON.stringify(idiomas),
         estudios     : JSON.stringify(estudios),
+        departamento : departamento,
+        distrito     : distrito,
+        tcontrato    : tcontrato,
         links_ref    : links_ref,
         id_user      : id_user_created
     };

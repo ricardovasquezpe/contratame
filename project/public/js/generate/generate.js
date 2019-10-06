@@ -65,12 +65,11 @@ function siguiente(){
             return;
         }
         var data = {
-            nombres : $("#nombres").val(),
-            apellidos : $("#apellidos").val(),
-            correo : $("#correo").val(),
-            telefono : $("#telefono").val(),
-            departamento : $("#departamento").val(),
-            distrito : $("#distrito").val()
+            nombres       : $("#nombres").val(),
+            apellidos     : $("#apellidos").val(),
+            correo        : $("#correo").val(),
+            telefono      : $("#telefono").val(),
+            fnacimiento   : $("#fnacimiento").val()
         };
         infobasica(data);
     }else if(index_page == 2){
@@ -96,7 +95,10 @@ function siguiente(){
         }
         var links_ref = $("#links_ref").val();
         $('#modal_terminando').modal('toggle');
-        generateCV(proyectos, experiencias, skills, idiomas, links_ref, estudios);
+        var v_departamento = $("#departamento").val();
+        var v_distrito     = $("#distrito").val();
+        var tcontrato      = $("#tcontrato").val();
+        generateCV(proyectos, experiencias, skills, idiomas, links_ref, v_departamento, v_distrito, tcontrato, estudios);
         return;
     }
     $('#atras').prop('disabled', false);

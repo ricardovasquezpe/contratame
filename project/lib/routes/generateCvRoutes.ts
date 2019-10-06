@@ -21,8 +21,9 @@ export class GenerateCvRoutes {
             check('apellidos').isLength({ min: 1, max : 20 }).withMessage('Apellidos field is not correct'),
             check('correo').isLength({ min: 1 }).isEmail().withMessage('Correo field is not correct'),
             check('telefono').isLength({ min: 1 }).withMessage('Telefono field is not correct'),
-            check('departamento').isLength({ min: 1 }).withMessage('Departamento field is not correct'),
-            check('distrito').isLength({ min: 1 }).withMessage('Distrito field is not correct')
+            check('fnacimiento').isLength({ min: 1 }).withMessage('Fecha de Nacimiento field is not correct')
+            //check('departamento').isLength({ min: 1 }).withMessage('Departamento field is not correct'),
+            //check('distrito').isLength({ min: 1 }).withMessage('Distrito field is not correct')
         ], this.userController.register);
 
         app.route('/cv/generar/generarcv').post(this.cvController.saveDataCV);

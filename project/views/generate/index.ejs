@@ -54,20 +54,8 @@
                             </div>
                             <div class="col-sm-6 col-lg-4">
                                 <div class="form-group">
-                                    <label for="departamento" class="color_gray">Departamento</label>
-                                    <select class="form-control" id="departamento" mandatory onchange="validarCampos();changeDepartamento();">
-                                        <option value="" selected disabled hidden>Escoge</option>
-                                        <option value="01">Amazonas</option><option value="02">Ancash</option><option value="03">Apurimac</option><option value="04">Arequipa</option><option value="05">Ayacucho</option><option value="06">Cajamarca</option><option value="07">Cusco</option><option value="08">Huancavelica</option><option value="09">Huanuco</option><option value="10">Ica</option><option value="11">Junín</option><option value="12">La Libertad</option><option value="13">Lambayeque</option><option value="14">Lima</option><option value="15">Loreto</option><option value="16">Madre De Dios</option><option value="17">Moquegua</option><option value="18">Pasco</option><option value="19">Piura</option><option value="20">Puno</option><option value="21">San Martin</option><option value="22">Tacna</option><option value="23">Tumbes</option><option value="24">Ucayali</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <div class="form-group">
-                                    <label for="distrito" class="color_gray">Distrito</label>
-                                    <select class="form-control" mandatory id="distrito" onchange="validarCampos()">
-                                        <option value="" selected disabled hidden>Escoge</option>
-
-                                    </select>
+                                    <label for="fnacimiento" class="color_gray">Fecha de Nacimiento</label>
+                                    <input type="text" class="form-control" id="fnacimiento" mandatory onkeyup="validarCampos()" date-mask>
                                 </div>
                             </div>
                         </div>
@@ -148,6 +136,37 @@
                                     <textarea type="text" class="form-control color_gray" id="links_ref" placeholder="www.github.com, www.myblog.com, etc"></textarea>
                                 </div>
                             </div>
+
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="departamento" class="color_gray">Departamento</label>
+                                    <select class="form-control" id="departamento" onchange="changeDepartamento();">
+                                        <option value="" selected disabled hidden>Escoge</option>
+                                        <option value="01">Amazonas</option><option value="02">Ancash</option><option value="03">Apurimac</option><option value="04">Arequipa</option><option value="05">Ayacucho</option><option value="06">Cajamarca</option><option value="07">Cusco</option><option value="08">Huancavelica</option><option value="09">Huanuco</option><option value="10">Ica</option><option value="11">Junín</option><option value="12">La Libertad</option><option value="13">Lambayeque</option><option value="14">Lima</option><option value="15">Loreto</option><option value="16">Madre De Dios</option><option value="17">Moquegua</option><option value="18">Pasco</option><option value="19">Piura</option><option value="20">Puno</option><option value="21">San Martin</option><option value="22">Tacna</option><option value="23">Tumbes</option><option value="24">Ucayali</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="distrito" class="color_gray">Distrito</label>
+                                    <select class="form-control"id="distrito">
+                                        <option value="" selected disabled hidden>Escoge</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="form-group">
+                                    <label for="tcontrato" class="color_gray">Tipo de Contrato</label>
+                                    <select class="form-control"id="tcontrato">
+                                        <option value="" selected disabled hidden>Escoge</option>
+                                        <option value="1">Full-Time</option>
+                                        <option value="1">Part-Time</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="col-sm-12">
                                 <label class="color_gray">Estudios (No obligatorio)</label>
                                 <div class="row" style="margin-top: 5px" id="estudios_container">
@@ -172,7 +191,7 @@
             <button type="button" class="btn btn-primary btn_direccion" id="siguiente" onclick="siguiente()" disabled>Siguiente</button>
         </footer>
 
-        <div class="modal fade" id="modal_bienvenida" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modal_bienvenida" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content" style="padding-top: 10px;padding-bottom: 10px;">
                     <div class="modal-body">
@@ -191,7 +210,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="modal_terminando" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modal_terminando" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
             <div class="modal-dialog" role="document">
                 <div class="modal-content" style="padding-top: 15px;">
                     <div class="modal-body">

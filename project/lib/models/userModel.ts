@@ -19,6 +19,7 @@ export const UserSchema = new Schema({
     links_ref    : String,
     link         : String,
     fnacimiento	 : Date,
+    tcontrato    : String,
     created_at   : Date,
     updated_at   : Date
 });
