@@ -94,8 +94,9 @@ function siguiente(){
             showNotification("Faltan idiomas", "Ingrese por lo menos 1 Idioma", "error");
             return;
         }
+        var links_ref = $("#links_ref").val();
         $('#modal_terminando').modal('toggle');
-        generateCV(proyectos, experiencias, skills, idiomas, estudios);
+        generateCV(proyectos, experiencias, skills, idiomas, links_ref, estudios);
         return;
     }
     $('#atras').prop('disabled', false);

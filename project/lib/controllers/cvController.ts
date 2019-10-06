@@ -20,14 +20,16 @@ export class CvController{
             return;*/
         }
         var experiencias = JSON.parse(req.body.experiencias);
-        var estudios = JSON.parse(req.body.estudios);
+        var estudios     = JSON.parse(req.body.estudios);
+        var links_ref    = req.body.links_ref;
 
         var updateData = {
             proyectos    : proyectos,
             experiencias : experiencias,
             skills       : skills,
             idiomas      : idiomas,
-            estudios     : estudios
+            estudios     : estudios,
+            links_ref    : links_ref
         };
 
         User.findByIdAndUpdate(id_user, updateData, function(err, userFound) {
