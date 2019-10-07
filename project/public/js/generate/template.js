@@ -2,7 +2,9 @@ function proyectoTemplate(nombre, puesto, fcomienzo, fterminado, descripcion, re
     var links = referencias.split(",");
     var referencias = "";
     links.forEach(element => {
-        referencias += "<li>" + element + "</li>";
+        if(element != ""){
+            referencias += "<li>" + element + "</li>";
+        }
     });
     var template = 
     `<div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
@@ -21,7 +23,7 @@ function proyectoTemplate(nombre, puesto, fcomienzo, fterminado, descripcion, re
                     <p class="exp_titulo_leng">` + descripcion + `
                     </p>
                 </div>
-                <div style="margin-top: 10px">
+                <div style="margin-top: 10px;">
                     <p class="exp_titulo_leng">Referencias</p>
                     <ul class="exp_desc_leng" style="text-decoration: underline;cursor: pointer;">
                     ` + referencias + `
@@ -42,7 +44,9 @@ function experienciaTemplate(empresa, puesto, fingreso, fsalida, herramientas, i
     var links = herramientas.split(",");
     var herramientas = "";
     links.forEach(element => {
-        herramientas += "<li>" + element + "</li>";
+        if(element != ""){
+            herramientas += "<li>" + element + "</li>";
+        }
     });
     var template = `
         <div class="col-sm-6 col-md-6 col-lg-4 col-lg-4">
