@@ -64,6 +64,17 @@ function siguiente(){
             showNotification("Teléfono Invalido", "Ingrese un número valido", "error");
             return;
         }
+
+        if(!validateDate($("#fnacimiento").val())){
+            showNotification("Fecha de Nacimiento Invalido", "Ingrese una fecha valida", "error");
+            return;
+        }
+
+        if(!validateFutureDate($("#fnacimiento").val())){
+            showNotification("Fecha de Nacimiento Invalido", "Ingrese una fecha valida", "error");
+            return;
+        }
+
         var data = {
             nombres       : toCapital($("#nombres").val().trim()),
             apellidos     : toCapital($("#apellidos").val().trim()),
@@ -190,14 +201,22 @@ function agregarProyecto(){
     var referencias = $("#referencias_proyecto").val().trim();
 
     if(nombre == "" || puesto == "" || fcomienzo == "" || descripcion == ""){
-        if(!$('#actual_proyecto').is(":checked") && fterminado == ""){
-            showNotification("Faltan campos", "Ingrese todos los campos", "error");
-            return;
-        }
+        showNotification("Faltan campos", "Ingrese todos los campos", "error");
+        return;
+    }
+
+    if(!validateDate(fcomienzo)){
+        showNotification("Fecha de Nacimiento Invalido", "Ingrese una fecha valida", "error");
+        return;
     }
 
     if ($('#actual_proyecto').is(":checked")){
         fterminado = "Actual";
+    }else{
+        if(!validateDate(fterminado)){
+            showNotification("Fecha de Nacimiento Invalido", "Ingrese una fecha valida", "error");
+            return;
+        }
     }
 
     var id = "temp_"+index_proyecto;
@@ -284,8 +303,24 @@ function confirmEditarProyecto(){
     var fterminado  = $("#fterminado_proyecto").val().trim();
     var descripcion = $("#descripcion_proyecto").val().trim();
     var referencias = $("#referencias_proyecto").val().trim();
+
+    if(nombre == "" || puesto == "" || fcomienzo == "" || descripcion == ""){
+        showNotification("Faltan campos", "Ingrese todos los campos", "error");
+        return;
+    }
+
+    if(!validateDate(fcomienzo)){
+        showNotification("Fecha de Nacimiento Invalido", "Ingrese una fecha valida", "error");
+        return;
+    }
+
     if ($('#actual_proyecto').is(":checked")){
         fterminado = "Actual";
+    }else{
+        if(!validateDate(fterminado)){
+            showNotification("Fecha de Nacimiento Invalido", "Ingrese una fecha valida", "error");
+            return;
+        }
     }
 
     var id = "temp_"+index_proyecto;
@@ -343,27 +378,35 @@ function agregarExperiencia(){
         confirmEditarExperiencia();
         return;
     }
-    var empresa     = toCapital($("#empresa_experiencia").val().trim());
+    var empresa     = $("#empresa_experiencia").val().trim();
     var puesto      = $("#puesto_experiencia").val().trim();
     var fingreso    = $("#fingreso_experiencia").val().trim();
     var fsalida     = $("#fsalida_experiencia").val().trim();
     var herramientas = $("#herramientas_experiencia").val().trim();
 
     if(empresa == "" || puesto == "" || fingreso == ""){
-        if(!$('#actual_experiencia').is(":checked") && fsalida == ""){
-            showNotification("Faltan campos", "Ingrese todos los campos", "error");
-            return;
-        }
+        showNotification("Faltan campos", "Ingrese todos los campos", "error");
+        return;
+    }
+
+    if(!validateDate(fingreso)){
+        showNotification("Fecha de Nacimiento Invalido", "Ingrese una fecha valida", "error");
+        return;
     }
 
     if ($('#actual_experiencia').is(":checked")){
         fsalida = "Actual";
+    }else{
+        if(!validateDate(fsalida)){
+            showNotification("Fecha de Nacimiento Invalido", "Ingrese una fecha valida", "error");
+            return;
+        }
     }
 
     var id = "temp_"+index_experiencia;
     experiencias.push({
         id: id,
-        empresa: empresa,
+        empresa: toCapital(empresa),
         puesto: puesto,
         fingreso:fingreso,
         fsalida:fsalida,
@@ -377,7 +420,7 @@ function agregarExperiencia(){
     $("#actual_experiencia").prop('checked', false);
     $("#herramientas_experiencia").val("");
 
-    var experiencia = experienciaTemplate(empresa, puesto, fingreso, fsalida, herramientas, id);
+    var experiencia = experienciaTemplate(toCapital(empresa), puesto, fingreso, fsalida, herramientas, id);
     $("#experiencias_container").prepend(experiencia);
     index_experiencia++;
 
@@ -433,20 +476,35 @@ function confirmEditarExperiencia(){
     
     experiencias.splice(index, 1);
 
-    var empresa     = toCapital($("#empresa_experiencia").val().trim());
+    var empresa     = $("#empresa_experiencia").val().trim();
     var puesto      = $("#puesto_experiencia").val().trim();
     var fingreso    = $("#fingreso_experiencia").val().trim();
     var fsalida     = $("#fsalida_experiencia").val().trim();
     var herramientas = $("#herramientas_experiencia").val().trim();
 
+    if(empresa == "" || puesto == "" || fingreso == ""){
+        showNotification("Faltan campos", "Ingrese todos los campos", "error");
+        return;
+    }
+
+    if(!validateDate(fingreso)){
+        showNotification("Fecha de Nacimiento Invalido", "Ingrese una fecha valida", "error");
+        return;
+    }
+
     if ($('#actual_experiencia').is(":checked")){
         fsalida = "Actual";
+    }else{
+        if(!validateDate(fsalida)){
+            showNotification("Fecha de Nacimiento Invalido", "Ingrese una fecha valida", "error");
+            return;
+        }
     }
 
     var id = "temp_"+index_experiencia;
     experiencias.push({
         id: id,
-        empresa: empresa,
+        empresa: toCapital(empresa),
         puesto: puesto,
         fingreso:fingreso,
         fsalida:fsalida,
@@ -465,7 +523,7 @@ function confirmEditarExperiencia(){
     $("#herramientas_experiencia").val("");
 
     var parent = $(elem_experiencia).parent().parent().find(".card-body");
-    $(parent).find(".exp_titulo").text(empresa);
+    $(parent).find(".exp_titulo").text(toCapital(empresa));
     $(parent).find(".exp_desc").text(puesto);
     $(parent).find(".exp_fecha").text("Desde " + fingreso + " hasta " + fsalida);
     $(elem_experiencia).attr("onclick", "editarExperiencia('" + id + "', this)");
@@ -487,11 +545,11 @@ function agregarEstudio(){
         confirmEditarEstudio();
         return;
     }
-    var titulo = toCapital($("#titulo_estudio").val().trim());
+    var titulo = $("#titulo_estudio").val().trim();
     var fecha  = $("#fecha_estudio").val().trim();
     var link   = $("#link_estudio").val().trim();
 
-    if(titulo == "" || fecha == "" || link == ""){
+    if(titulo == "" || fecha == ""){
         showNotification("Faltan campos", "Ingrese todos los campos", "error");
         return;
     }
@@ -553,9 +611,14 @@ function confirmEditarEstudio(){
     
     estudios.splice(index, 1);
 
-    var titulo = toCapital($("#titulo_estudio").val());
+    var titulo = $("#titulo_estudio").val();
     var fecha  = $("#fecha_estudio").val().trim();
     var link   = $("#link_estudio").val().trim();
+
+    if(titulo == "" || fecha == ""){
+        showNotification("Faltan campos", "Ingrese todos los campos", "error");
+        return;
+    }
 
     var id = "temp_"+index_estudios;
     estudios.push({
@@ -641,4 +704,21 @@ function toCapital(palabras){
         return word[0].toUpperCase() + word.substr(1);
     })
     .join(' ');
+}
+
+function validateFutureDate(fecha){
+    var result = moment().diff(moment(fecha, 'DD/MM/YYYY'), 'days');
+    var bool = false;
+    if(result > 0){
+        bool = true;
+    }
+    return bool;
+}
+
+function validateDate(fecha){
+    var bool = true;
+    if(moment(fecha, 'YYYY-MM-DD', true).isValid() || fecha.length != 10){
+        bool = false;
+    }
+    return bool;
 }

@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 import { UserSchema } from '../models/userModel';
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
+import * as moment from 'moment'; 
 
 const User = mongoose.model('User', UserSchema);
 
@@ -105,7 +106,11 @@ export class CvController{
             }
 
             res.render('cv/cv', { 
-                title: user.apellidos + " " + user.nombres
+                title     : user.apellidos + " " + user.nombres,
+                iniciales : user.nombres.charAt(0)+user.apellidos.charAt(0),
+                nombres   : user.nombres,
+                apellidos : user.apellidos,
+                anos      : moment().diff(user.fnacimiento, 'years')
             });
         });
     }
