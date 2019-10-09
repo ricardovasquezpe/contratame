@@ -31,15 +31,15 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 text_center_first">
                                     <p class="mb-0">Edad: <%= anos %> años</p>
-                                    <p class="mb-0">Idiomas: Español e Ingles</p>
-                                    <p class="mb-0">Tipo Contrato: Full-Time</p>
+                                    <p class="mb-0">Idiomas: <%= idiomas %></p>
+                                    <p class="mb-0">Tipo Contrato: <%= tcontrato %></p>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 flexbox">
                                     <button type="button" class="btn btn-primary btn_invitar">Contactar</button>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <p class="mb-0 first_contactos d-inline-block">Telefono: <strong style="cursor: pointer;text-decoration: underline;">982278229</strong></p>
-                                    <p class="mb-0 first_contactos d-inline-block">Correo: <strong style="cursor: pointer;text-decoration: underline;">ricardo.vasquez.pe@gmail.com</strong></p>
+                                    <p class="mb-0 first_contactos d-inline-block">Telefono: <strong style="cursor: pointer;text-decoration: underline;"><%= telefono %></strong></p>
+                                    <p class="mb-0 first_contactos d-inline-block">Correo: <strong style="cursor: pointer;text-decoration: underline;"><%= correo %></strong></p>
                                 </div>
                             </div>
                         </div>
@@ -53,40 +53,15 @@
                                         <div class="col-sm-12">
                                             <p class="card-title d-inline-block">Skills</p>
                                             <span class="badge badge-primary">
-                                                <i class="fas fa-infinity"></i> 10
+                                                <i class="fas fa-infinity"></i> <%= skills.length %>
                                             </span>
                                         </div>
                                         <div class="col-sm-12">
-                                            <span class="badge badge-primary skills">
-                                                Reactjs
-                                            </span>
-                                            <span class="badge badge-primary skills">
-                                                Android
-                                            </span>
-                                            <span class="badge badge-primary skills">
-                                                MongoDB
-                                            </span>
-                                            <span class="badge badge-primary skills">
-                                                PHP
-                                            </span>
-                                            <span class="badge badge-primary skills">
-                                                AWS
-                                            </span>
-                                            <span class="badge badge-primary skills">
-                                                Mysql
-                                            </span>
-                                            <span class="badge badge-primary skills">
-                                                PostgreSQL
-                                            </span>
-                                            <span class="badge badge-primary skills">
-                                                Jenkins
-                                            </span>
-                                            <span class="badge badge-primary skills">
-                                                Docker
-                                            </span>
-                                            <span class="badge badge-primary skills">
-                                                Kubernetes
-                                            </span>
+                                            <% for (let skill of skills){ %>
+                                                <span class="badge badge-primary skills">
+                                                        <%= skill %>
+                                                </span>
+                                            <% }%>
                                         </div>
                                     </div>
                                 </div>
@@ -100,18 +75,19 @@
                                         <div class="col-sm-12">
                                             <p class="card-title d-inline-block">Links</p>
                                             <span class="badge badge-primary">
-                                                <i class="fas fa-share-alt"></i> 5
+                                                <i class="fas fa-share-alt"></i> <%= links.length %>
                                             </span>
                                         </div>
                                         <div class="col-sm-12">
-                                            <p class="mb-0 links" style="cursor: pointer">https://github.com/ricardovasquezpe/reports365</p>
-                                            <p class="mb-0 links" style="cursor: pointer">https://github.com/ricardovasquezpe/reports365</p>
-                                            <p class="mb-0 links" style="cursor: pointer">https://github.com/ricardovasquezpe/reports365</p>
-
-                                            <div class="text-center" style="margin-top:10px">   
+                                            <% for (let link of links){ %>
+                                                <p class="mb-0 links" style="cursor: pointer">
+                                                    <%= link %>
+                                                </p>
+                                            <% }%>
+                                            <!--div class="text-center" style="margin-top:10px">   
                                                 <p class="mb-0 d-inline-block expandir" style="cursor: pointer">Expandir</p>
                                                 <i style="cursor: pointer;" class="fas fa-chevron-down expandir_icon"></i>
-                                            </div>
+                                            </div-->
                                         </div>
                                     </div>
                                 </div>
@@ -133,41 +109,30 @@
                                 <div class="col-sm-12">
                                     <p class="card-title d-inline-block">Proyectos</p>
                                     <span class="badge badge-primary">
-                                        <i class="far fa-folder"></i> 3
+                                        <i class="far fa-folder"></i> <%= proyectos.length %>
                                     </span>
                                 </div>
-                                <div>
-                                    <div class="col-sm-12" style="font-weight: bold">
-                                        <p class="d-inline-block">ePaisa</p> <p class="d-inline-block">(Ene 2019 - Presente)</p> - <p class="d-inline-block">Android Developer</p>
+                                <% for (let [index, proyecto] of proyectos.entries()){ %>
+                                    <div class="<%= (index > 0) ? 'mt-3' : '' %>">
+                                        <div class="col-sm-12" style="font-weight: bold">
+                                            <p class="d-inline-block"><%= proyecto.nombre %></p> <p class="d-inline-block">(Ene 2019 - Presente)</p> - <p class="d-inline-block"><%= proyecto.puesto %></p>
+                                        </div>
+                                        <div style="padding-left: 30px;font-size: 14px;width: 100%">
+                                            <p style="margin-bottom: 5px;font-weight: bold">Descripción</p>
+                                            <p><%= proyecto.descripcion %></p>
+                                        </div>
+                                        <div style="padding-left: 30px;font-size: 14px;width: 100%">
+                                            <strong>
+                                                <p style="margin-bottom: 5px;">Referencias</p>
+                                            </strong>
+                                            <% for (let referencia_proy of proyecto.referencias.split(",")){ %>
+                                                <p class="mb-0" style="cursor: pointer;text-decoration: underline;">
+                                                    <%= referencia_proy %>
+                                                </p>
+                                            <% }%>
+                                        </div>
                                     </div>
-                                    <div style="padding-left: 30px;font-size: 14px;width: 100%">
-                                        <p style="margin-bottom: 5px;font-weight: bold">Descripción</p>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                    </div>
-                                    <div style="padding-left: 30px;font-size: 14px;width: 100%">
-                                        <strong><p style="margin-bottom: 5px;">Referencias</p></strong>
-                                        <p class="mb-0" style="cursor: pointer;text-decoration: underline;">https://github.com/ricardovasquezpe/reports365</p>
-                                        <p class="mb-0" style="cursor: pointer;text-decoration: underline;">https://github.com/ricardovasquezpe/reports365</p>
-                                        <p class="mb-0" style="cursor: pointer;text-decoration: underline;">https://github.com/ricardovasquezpe/reports365</p>
-                                    </div>
-                                </div>
-
-                                <div style="margin-top: 20px">
-                                    <div class="col-sm-12" style="font-weight: bold">
-                                        <p class="d-inline-block">ePaisa</p> <p class="d-inline-block">(Ene 2019 - Presente)</p> - <p class="d-inline-block">Android Developer</p>
-                                    </div>
-                                    <div style="padding-left: 30px;font-size: 14px;width: 100%">
-                                        <p style="margin-bottom: 5px;font-weight: bold">Descripción</p>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                    </div>
-                                    <div style="padding-left: 30px;font-size: 14px;width: 100%">
-                                        <strong><p style="margin-bottom: 5px;">Referencias</p></strong>
-                                        <p class="mb-0" style="cursor: pointer;text-decoration: underline;">https://github.com/ricardovasquezpe/reports365</p>
-                                        <p class="mb-0" style="cursor: pointer;text-decoration: underline;">https://github.com/ricardovasquezpe/reports365</p>
-                                        <p class="mb-0" style="cursor: pointer;text-decoration: underline;">https://github.com/ricardovasquezpe/reports365</p>
-                                    </div>
-                                </div>
-                                
+                                <% }%>
                             </div>
                             <!--div class="text-center" style="margin-top:10px">   
                                 <p class="mb-0 d-inline-block expandir" style="cursor: pointer">Ver más proyectos</p>
@@ -184,35 +149,33 @@
                                         <div class="col-sm-12">
                                             <p class="card-title d-inline-block">Exp. Laboral</p>
                                             <span class="badge badge-primary">
-                                                <i class="fas fa-city"></i> 2
+                                                <i class="fas fa-city"></i> <%= experiencias.length %>
                                             </span>
                                         </div>
-                                        <div class="col-sm-12" style="font-weight: bold">
-                                            <p class="d-inline-block">IBM sac</p> <p class="d-inline-block">(Ene 2019 - Presente)</p>
-                                        </div>
-                                        <div style="padding-left: 30px;font-size: 14px;width: 100%">
-                                            <p style="margin-bottom: 5px;font-weight: bold">Funciones</p>
-                                            <ul>
-                                                <li>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unkno</li>
-                                                <li>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unkno</li>
-                                                <li>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unkno</li>
-                                                <li>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unkno</li>
-                                            </ul>
-                                        </div>
-                                        <div style="padding-left: 30px;font-size: 14px;width: 100%">
-                                            <p style="margin-bottom: 5px;font-weight: bold">Lenguajes de programación o Herramientas</p>
-                                            <ul>
-                                                <li>Mysql</li>
-                                                <li>MongoDB</li>
-                                                <li>Pentaho</li>
-                                                <li>Scrum</li>
-                                            </ul>
-                                        </div>
+                                        <% for (let [index, experiencia] of experiencias.entries()){ %>
+                                            <div class="<%= (index > 0) ? 'mt-3' : '' %>">
+                                                <div class="col-sm-12" style="font-weight: bold">
+                                                    <p class="d-inline-block"><%= experiencia.empresa %></p> <p class="d-inline-block">(Ene 2019 - Presente)</p>
+                                                </div>
+                                                <div style="padding-left: 30px;font-size: 14px;width: 100%">
+                                                    <p style="margin-bottom: 5px;font-weight: bold">Funciones</p>
+                                                    <p>feffe</p>
+                                                </div>
+                                                <div style="padding-left: 30px;font-size: 14px;width: 100%">
+                                                    <p style="margin-bottom: 5px;font-weight: bold">Lenguajes de programación o Herramientas</p>
+                                                    <ul>
+                                                        <% for (let herramientas of experiencia.herramientas.split(",")){ %>
+                                                            <li><%= herramientas %></li>
+                                                        <% }%>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        <% }%>
                                     </div>
-                                    <div class="text-center" style="margin-top:10px">   
+                                    <!--div class="text-center" style="margin-top:10px">   
                                         <p class="mb-0 d-inline-block expandir" style="cursor: pointer">Expandir</p>
                                         <i style="cursor: pointer;" class="fas fa-chevron-down expandir_icon"></i>
-                                    </div>
+                                    </div-->
                                 </div>
                             </div>
                         </div>
@@ -223,21 +186,25 @@
                                         <div class="col-sm-12">
                                             <p class="card-title d-inline-block">Estudios</p>
                                             <span class="badge badge-primary">
-                                                <i class="fas fa-graduation-cap"></i> 2
+                                                <i class="fas fa-graduation-cap"></i> <%= estudios.length %>
                                             </span>
                                         </div>
-                                        <div class="col-sm-12" style="font-weight: bold">
-                                            <p class="d-inline-block">Scrum Master</p> <p class="d-inline-block">(Ene 2019)</p>
-                                        </div>
-                                        <div style="padding-left: 30px;font-size: 14px;width: 100%">
-                                            <p style="margin-bottom: 5px;font-weight: bold">Links</p>
-                                            <p class="mb-0" style="cursor: pointer;text-decoration: underline;">https://github.com/ricardovasquezpe/reports365</p>
-                                        </div>
+                                        <% for (let [index, estudio] of estudios.entries()){ %>
+                                            <div class="<%= (index > 0) ? 'mt-3' : '' %>">
+                                                <div class="col-sm-12" style="font-weight: bold">
+                                                    <p class="d-inline-block"><%= estudio.titulo %></p> <p class="d-inline-block">(Ene 2019)</p>
+                                                </div>
+                                                <div style="padding-left: 30px;font-size: 14px;width: 100%">
+                                                    <p style="margin-bottom: 5px;font-weight: bold">Link</p>
+                                                    <p class="mb-0" style="cursor: pointer;text-decoration: underline;"><%= estudio.link %></p>
+                                                </div>
+                                            </div>
+                                        <% }%>
                                     </div>
-                                    <div class="text-center" style="margin-top:10px">   
+                                    <!--div class="text-center" style="margin-top:10px">   
                                         <p class="mb-0 d-inline-block expandir" style="cursor: pointer">Expandir</p>
                                         <i style="cursor: pointer;" class="fas fa-chevron-down expandir_icon"></i>
-                                    </div>
+                                    </div-->
                                 </div>
                             </div>
                         </div>

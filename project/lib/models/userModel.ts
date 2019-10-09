@@ -16,7 +16,7 @@ export const UserSchema = new Schema({
     skills       : { type : Array , "default" : [] },
     idiomas      : { type : Array , "default" : [] },
     estudios     : { type : Array , "default" : [] },
-    links_ref    : String,
+    links_ref    : { type : Array , "default" : [] },
     link         : String,
     fnacimiento	 : Date,
     tcontrato    : String,

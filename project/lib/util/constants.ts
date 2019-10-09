@@ -1,8 +1,8 @@
-export class Constantes { 
+export abstract class Constants { 
 
-    public TIPO_CONTRATOS = {
-        "0" : "Fulltime",
-        "1" : "Parttime"
+    static readonly TIPO_CONTRATOS: any = {
+        "0" : "Full-Time",
+        "1" : "Part-Time"
     };
 
 }

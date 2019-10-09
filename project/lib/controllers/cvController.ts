@@ -3,6 +3,7 @@ import { UserSchema } from '../models/userModel';
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 import * as moment from 'moment'; 
+import { Constants } from '../util/constants';
 
 const User = mongoose.model('User', UserSchema);
 
@@ -22,7 +23,10 @@ export class CvController{
         }
         var experiencias = JSON.parse(req.body.experiencias);
         var estudios     = JSON.parse(req.body.estudios);
-        var links_ref    = req.body.links_ref;
+        var links_ref    = [];
+        if(req.body.links_ref.length > 0){
+            links_ref    = req.body.links_ref.split(",");
+        }
         var departamento = req.body.departamento;
         var distrito     = req.body.distrito;
         var tcontrato    = req.body.tcontrato;
@@ -104,13 +108,36 @@ export class CvController{
               );
               return;
             }
+            
+            var idiomas = "";
+            user.idiomas.forEach(function (item, index) {
+                if(user.idiomas.length == 1){
+                    idiomas = item;
+                }else{
+                    idiomas += item;
+                    if(index == user.idiomas.length - 2){
+                        idiomas += " y ";
+                    } else if(index != user.idiomas.length - 1){
+                        idiomas += ", ";
+                    }
+                }
+            });
 
             res.render('cv/cv', { 
-                title     : user.apellidos + " " + user.nombres,
-                iniciales : user.nombres.charAt(0)+user.apellidos.charAt(0),
-                nombres   : user.nombres,
-                apellidos : user.apellidos,
-                anos      : moment().diff(user.fnacimiento, 'years')
+                title        : user.apellidos + " " + user.nombres,
+                iniciales    : user.nombres.charAt(0)+user.apellidos.charAt(0),
+                nombres      : user.nombres,
+                apellidos    : user.apellidos,
+                anos         : moment().diff(user.fnacimiento, 'years'),
+                telefono     : user.telefono,
+                correo       : user.correo,
+                idiomas      : idiomas,
+                skills       : user.skills,
+                links        : user.links_ref,
+                tcontrato    : Constants.TIPO_CONTRATOS[user.tcontrato],
+                proyectos    : user.proyectos,
+                experiencias : user.experiencias,
+                estudios     : user.estudios
             });
         });
     }

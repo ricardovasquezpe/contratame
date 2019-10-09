@@ -95,7 +95,7 @@ function siguiente(){
         $("#siguiente").html("Terminar");
     }else if(index_page == 4){
         var skills = $("#skills").tagsinput('items');
-        if(skills.length == 0){
+        if(skills.length < 5){
             showNotification("Faltan skills", "Ingrese por lo menos 5 skills", "error");
             return;
         }
