@@ -123,6 +123,22 @@ export class CvController{
                 }
             });
 
+            user.estudios.sort(function(a,b){
+                return <any>new Date(b.fecha) - <any>new Date(a.fecha);
+            });
+
+            user.experiencias.sort(function(a,b){
+                return <any>new Date(b.fsalida) - <any>new Date(a.fsalida);
+            });
+
+            user.proyectos.sort(function(a,b){
+                return <any>new Date(b.fterminado) - <any>new Date(a.fterminado);
+            });
+
+            const monthNames = ["Ene", "Feb", "Mar", "Abr", "Mayo", "Jun",
+            "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"
+            ];
+            
             res.render('cv/cv', { 
                 title        : user.apellidos + " " + user.nombres,
                 iniciales    : user.nombres.charAt(0)+user.apellidos.charAt(0),
@@ -137,7 +153,9 @@ export class CvController{
                 tcontrato    : Constants.TIPO_CONTRATOS[user.tcontrato],
                 proyectos    : user.proyectos,
                 experiencias : user.experiencias,
-                estudios     : user.estudios
+                estudios     : user.estudios,
+                meses        : monthNames,
+                moment       : moment
             });
         });
     }
