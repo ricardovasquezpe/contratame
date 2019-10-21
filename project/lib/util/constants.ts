@@ -5,4 +5,9 @@ export abstract class Constants {
         "1" : "Part-Time"
     };
 
+    static readonly MESES: any = [
+        "Ene", "Feb", "Mar", "Abr", "Mayo", "Jun",
+        "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"
+    ];
+
 }

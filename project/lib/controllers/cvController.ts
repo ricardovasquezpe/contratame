@@ -135,12 +135,8 @@ export class CvController{
                 return <any>new Date(b.fterminado) - <any>new Date(a.fterminado);
             });
 
-            const monthNames = ["Ene", "Feb", "Mar", "Abr", "Mayo", "Jun",
-            "Jul", "Ago", "Sept", "Oct", "Nov", "Dic"
-            ];
-            
             res.render('cv/cv', { 
-                title        : user.apellidos + " " + user.nombres,
+                title        : user.apellidos + ", " + user.nombres,
                 iniciales    : user.nombres.charAt(0)+user.apellidos.charAt(0),
                 nombres      : user.nombres,
                 apellidos    : user.apellidos,
@@ -154,7 +150,7 @@ export class CvController{
                 proyectos    : user.proyectos,
                 experiencias : user.experiencias,
                 estudios     : user.estudios,
-                meses        : monthNames,
+                meses        : Constants.MESES,
                 moment       : moment
             });
         });

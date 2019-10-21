@@ -104,11 +104,27 @@ function siguiente(){
             showNotification("Faltan idiomas", "Ingrese por lo menos 1 Idioma", "error");
             return;
         }
+
+        var v_departamento = $("#departamento").val();
+        if(v_departamento == null || v_departamento == ""){
+            showNotification("Faltan escoger departamento", "Seleccione un departamento", "error");
+            return;
+        }
+
+        var v_distrito     = $("#distrito").val();
+        if(v_distrito == null || v_distrito == ""){
+            showNotification("Faltan escoger distrito", "Seleccione un distrito", "error");
+            return;
+        }
+
+        var tcontrato      = $("#tcontrato").val();
+        if(tcontrato == null || tcontrato == ""){
+            showNotification("Faltan escoger tipo de contrato", "Seleccione un tipo de contrato", "error");
+            return;
+        }
+
         var links_ref = $("#links_ref").val();
         $('#modal_terminando').modal('toggle');
-        var v_departamento = $("#departamento").val();
-        var v_distrito     = $("#distrito").val();
-        var tcontrato      = $("#tcontrato").val();
         generateCV(proyectos, experiencias, skills, idiomas, links_ref, v_departamento, v_distrito, tcontrato, estudios);
         return;
     }
