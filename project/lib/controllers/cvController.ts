@@ -4,12 +4,15 @@ import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 import * as moment from 'moment'; 
 import { Constants } from '../util/constants';
+import { Emails } from '../util/emails';
 
 const User = mongoose.model('User', UserSchema);
 
-export class CvController{
 
-    public saveDataCV(req: Request, res: Response){
+export class CvController{
+    public emails: Emails = new Emails();
+
+    public saveDataCV = (req: Request, res: Response) => {
         var id_user = req.body.id_user;
         var proyectos = JSON.parse(req.body.proyectos);
         var skills    = JSON.parse(req.body.skills);
@@ -43,7 +46,7 @@ export class CvController{
             tcontrato    : tcontrato
         };
 
-        User.findByIdAndUpdate(id_user, updateData, function(err, userFound) {
+        User.findByIdAndUpdate(id_user, updateData, (err, userFound) => {
             if(!userFound){
                 res.json(
                     {"status" : false,
@@ -52,10 +55,12 @@ export class CvController{
                 return;
             }
 
+            this.emails.sendEmailBienvenida(userFound.correo, userFound.nombres)
+
             res.json(
                 {"status" : true,
                  "data" : "Updated Correctly"}
-                );
+            );
             return;
         });
     }
@@ -102,11 +107,8 @@ export class CvController{
     public getCVData(req: Request, res: Response){
         User.findOne({ link : req.params.person}, { '_id': 0 }, function(err, user) {
             if(!user){
-              res.json(
-                {"status" : false,
-                 "data"   : 'User not found'}
-              );
-              return;
+                res.render('cv/notfound');
+                return;
             }
             
             var idiomas = "";

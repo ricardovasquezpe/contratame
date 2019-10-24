@@ -3,19 +3,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 exports.UserSchema = new Schema({
-    name: {
-        type: String,
-        required: 'Enter a first name'
-    },
-    lastname: {
-        type: String,
-        required: 'Enter a last name'
-    },
-    username: { type: String, required: true, unique: true },
+    nombres: String,
+    apellidos: String,
+    usuario: String,
     password: String,
-    email: { type: String, required: true, unique: true },
-    type: String,
-    birthdate: Date,
+    correo: { type: String, required: true, unique: true },
+    departamento: String,
+    distrito: String,
+    telefono: String,
+    proyectos: { type: Array, "default": [] },
+    experiencias: { type: Array, "default": [] },
+    skills: { type: Array, "default": [] },
+    idiomas: { type: Array, "default": [] },
+    estudios: { type: Array, "default": [] },
+    links_ref: { type: Array, "default": [] },
+    link: String,
+    fnacimiento: Date,
+    tcontrato: String,
     created_at: Date,
     updated_at: Date
 });

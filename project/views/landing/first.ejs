@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/first.css">
+        <title>ContrataDev - Perú</title>
     </head>
     <body>
         <header class="header">
@@ -18,7 +19,7 @@
                                 <p class="items_header" style="margin: 0;">Nosotros</p>
                             </div>
                             <div class="col-sm-3">
-                                <p class="items_header" style="margin: 0;" onclick="redirigir('cv.html')">Ejemplos</p>
+                                <p class="items_header" style="margin: 0;" onclick="abrirRegistrar()">Registrate!</p>
                             </div>
                         </div>
                     </div>
@@ -40,29 +41,42 @@
                     <img src="https://dummyimage.com/100x150/d4d4d4/000000.jpg"/>
                 </div>
                 <div class="text-center" style="margin-top: 40px">
-                    <p class="title_one">Crea tu CV online, compartela y recibe propuestas de miles de Empresas y Startups registradas</p>
+                    <p class="title_one">Unete a <span style="color: #6c2794; border:2px solid #6c2794; padding-left: 2px;padding-right: 2px">ContrataDev</span>, la mayor bolsa de trabajo <br/> solo para <span style="color: #6c2794; border:2px solid #6c2794; padding-left: 2px;padding-right: 2px">Developers</span> que buscan nuevas experiencias laborales</p>
                 </div>
                 <div class="text-center" style="margin-top: -12px">
                     <p class="title_two">Te ayudaremos a que las Empresas y/o Startups vean tu perfil, se contacten contigo y te contraten</p>
                 </div>
                 <div class="text-center" style="margin-top: 40px">
-                    <button type="button" class="btn btn-primary btn_empezar" style="height: 60px;" onclick="redirigir('index.html')">Empezar!</button>
+                    <button type="button" class="btn btn-primary btn_empezar" style="height: 60px;" onclick="redirigir('cv/generar')">Empezar!</button>
                 </div>
             </div>
             
         </section>
 
-        <section class="numeros" style="background-color: #f0e9f4; padding-top: 50px; padding-bottom: 50px">
+        <section class="numeros" style="background-color: #f0e9f4; padding-top: 40px; padding-bottom: 40px">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
                         <div style="margin-bottom: 40px" class="text-center">
-                            <p class="mb-0" style="font-size: 25px;color: #444343;"><strong>Nuestra meta</strong></p>
-                            <p class="color_gray">Ayudanos a llegar a la meta y obtener beneficios</p>
+                            <p class="mb-0 color_gray" style="font-size: 25px;"><strong>Nuestros números al día de hoy</strong></p>
                         </div>
+                    </div>
+                    <div class="col-sm-4">
                         <div class="text-center">
-                            <p class="color_gray">Queremos llegar a los <strong>500 programadores registrados</strong> y publicitar la marca en más empresas, 
-                                asi dandote la oportunidad de obtener trabajo en muchas de las <strong>Empresas y/o Startups</strong> registradas. Ademas darte <strong>beneficios</strong> por ser uno de los primeros programadores registrados</p>
+                            <p style="font-size: 50px" class="mb-0 color_gray">+1500</p>
+                            <p class="mb-0 color_gray">Developers registrados en nuestro sistema y con beneficios coorporatibos</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <p style="font-size: 50px" class="mb-0 color_gray">+23</p>
+                            <p class="mb-0 color_gray">Empresas y/o Startups confian en nuestro sistema y consiguen el perfil deseado</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <p style="font-size: 50px" class="mb-0 color_gray">100%</p>
+                            <p class="mb-0 color_gray">Developers consiguieron trabajo en menos de 2 semanas</p>
                         </div>
                     </div>
                 </div>
@@ -83,8 +97,8 @@
                             <img src="https://dummyimage.com/100x100/d4d4d4/000000.jpg"/>
                         </div>
                         <div style="margin-top: 15px">
-                            <p class="mb-0 color_gray" style=""><strong>Para Programadores</strong></p>
-                            <p class="mb-0 color_gray" style="font-size: 14px">Te ayudaremos a conseguir un puesto laboral en base a tus experiencias, puede ser proyectos de universidad o de trabajo. Nos interesa que te desarrolles laboralmente</p>
+                            <p class="mb-0 color_gray"><span style="color: #6c2794; border:2px solid #6c2794; padding-left: 2px;padding-right: 2px;font-weight: bold">Para Developers</span></p>
+                            <p class="mb-0 color_gray" style="font-size: 15px; margin-top: 20px">Te ayudaremos a conseguir un puesto laboral en base a tus experiencias, puede ser proyectos de universidad o de trabajo. Nos interesa que te desarrolles laboralmente</p>
                         </div>
                     </div>
                     <div class="col-sm-6 text-center">
@@ -92,38 +106,25 @@
                             <img src="https://dummyimage.com/100x100/d4d4d4/000000.jpg"/>
                         </div>
                         <div style="margin-top: 15px">
-                            <p class="mb-0 color_gray" style=""><strong>Para Empresas y Startups</strong></p>
-                            <p class="mb-0 color_gray" style="font-size: 14px">Te ayudaremos en conseguir el mejor perfil para tu empresa y/o startup en base a sus experiencias</p>
+                            <p class="mb-0 color_gray"><span style="color: #6c2794; border:2px solid #6c2794; padding-left: 2px;padding-right: 2px;font-weight: bold">Para Empresas y Startups</span></p>
+                            <p class="mb-0 color_gray" style="font-size: 15px; margin-top: 20px">Te ayudaremos en conseguir el mejor perfil para tu empresa y/o startup en base a sus experiencias</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="numeros" style="background-color: #f0e9f4; padding-top: 40px; padding-bottom: 40px">
+        <section class="numeros" style="background-color: #f0e9f4; padding-top: 50px; padding-bottom: 50px">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
                         <div style="margin-bottom: 40px" class="text-center">
-                            <p class="mb-0 color_gray" style="font-size: 25px;"><strong>Nuestros números al día de hoy</strong></p>
+                            <p class="mb-0" style="font-size: 25px;color: #444343;"><strong>Nuestra meta</strong></p>
+                            <p class="color_gray">Ayudanos a llegar a la meta y obtener beneficios</p>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
                         <div class="text-center">
-                            <p style="font-size: 50px" class="mb-0 color_gray">+200</p>
-                            <p class="mb-0 color_gray">Programadores registrados en nuestro sistema y con beneficios coorporatibos</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="text-center">
-                            <p style="font-size: 50px" class="mb-0 color_gray">+15</p>
-                            <p class="mb-0 color_gray">Empresas y/o Startups confian en nuestro sistema y consiguen el perfil deseado</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="text-center">
-                            <p style="font-size: 50px" class="mb-0 color_gray">100%</p>
-                            <p class="mb-0 color_gray">Programadores consiguieron trabajo en menos de 2 semanas</p>
+                            <p class="color_gray">Queremos llegar a los <span style="color: #6c2794; border:2px solid #6c2794; padding-left: 2px;padding-right: 2px;font-weight: bold">500 Developers registrados</span> y publicitar la marca en más empresas, 
+                                asi dandote la oportunidad de obtener trabajo en muchas de las <span style="color: #6c2794; border:2px solid #6c2794; padding-left: 2px;padding-right: 2px;font-weight: bold">Empresas y/o Startups</span> registradas. Ademas darte <span style="color: #6c2794; border:2px solid #6c2794; padding-left: 2px;padding-right: 2px;font-weight: bold">beneficios</span> por ser uno de los primeros Developers registrados</p>
                         </div>
                     </div>
                 </div>
@@ -168,6 +169,26 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="modal_registrar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content" style="padding-top: 10px;padding-bottom: 10px;">
+                    <div class="modal-body">
+                        <div>
+                            <div class="row">
+                                <div class="col-sm-6 text-center">
+                                    <img src="https://dummyimage.com/200x200/d4d4d4/000000.jpg" style="width: 90%"/>
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                    <img src="https://dummyimage.com/200x200/d4d4d4/000000.jpg" style="width: 90%"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -180,6 +201,10 @@
 
         function redirigir(url){
             location.href = url;
+        }
+        
+        function abrirRegistrar(){
+            $('#modal_registrar').modal('toggle');
         }
     </script>
 

@@ -30,5 +30,7 @@ export class GenerateCvRoutes {
             check('link').isLength({ min: 1, max : 30 }).withMessage('Link field is not correct')
         ], this.cvController.validateLink);
 
+        //app.route('/cv/email').get(this.cvController.sendEmailBienvenida);
+
     }
 }
