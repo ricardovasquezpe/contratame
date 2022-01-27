@@ -11,7 +11,7 @@ function infobasica(data){
     });
 }
 
-function generateCV(proyectos, experiencias, skills, idiomas, links_ref, departamento, distrito, tcontrato, estudios){
+function generateCV(proyectos, experiencias, skills, idiomas, links_ref, departamento, distrito, tcontrato, estudios, titulo){
     var data = {
         proyectos    : JSON.stringify(proyectos),
         experiencias : JSON.stringify(experiencias),
@@ -22,7 +22,8 @@ function generateCV(proyectos, experiencias, skills, idiomas, links_ref, departa
         distrito     : distrito,
         tcontrato    : tcontrato,
         links_ref    : links_ref,
-        id_user      : id_user_created
+        id_user      : id_user_created,
+        titulo       : titulo
     };
 
     $.ajax({

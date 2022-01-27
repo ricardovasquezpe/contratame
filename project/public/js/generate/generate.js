@@ -123,9 +123,15 @@ function siguiente(){
             return;
         }
 
+        var v_titulo = $("#titulo").val().trim();
+        if(v_titulo == ""){
+            showNotification("Faltan ingresar un titulo", "Ingrese un titulo", "error");
+            return;
+        }
+
         var links_ref = $("#links_ref").val();
         $('#modal_terminando').modal('toggle');
-        generateCV(proyectos, experiencias, skills, idiomas, links_ref, v_departamento, v_distrito, tcontrato, estudios);
+        generateCV(proyectos, experiencias, skills, idiomas, links_ref, v_departamento, v_distrito, tcontrato, estudios, v_titulo);
         return;
     }
     $('#atras').prop('disabled', false);
@@ -222,7 +228,7 @@ function agregarProyecto(){
     }
 
     if(!validateDate(fcomienzo)){
-        showNotification("Fecha de Nacimiento Invalido", "Ingrese una fecha valida", "error");
+        showNotification("Fecha de Inicio Invalido", "Ingrese una fecha valida", "error");
         return;
     }
 
@@ -230,7 +236,7 @@ function agregarProyecto(){
         fterminado = "Actual";
     }else{
         if(!validateDate(fterminado)){
-            showNotification("Fecha de Nacimiento Invalido", "Ingrese una fecha valida", "error");
+            showNotification("Fecha de Terminado Invalido", "Ingrese una fecha valida", "error");
             return;
         }
     }
@@ -733,8 +739,9 @@ function validateFutureDate(fecha){
 
 function validateDate(fecha){
     var bool = true;
-    if(moment(fecha, 'YYYY-MM-DD', true).isValid() || fecha.length != 10){
+    if(!moment(fecha, 'DD/MM/YYYY', true).isValid() || fecha.length != 10){
         bool = false;
     }
+
     return bool;
 }

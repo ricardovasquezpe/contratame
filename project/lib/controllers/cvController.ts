@@ -33,6 +33,7 @@ export class CvController{
         var departamento = req.body.departamento;
         var distrito     = req.body.distrito;
         var tcontrato    = req.body.tcontrato;
+        var titulo       = req.body.titulo;
 
         var updateData = {
             proyectos    : proyectos,
@@ -43,7 +44,8 @@ export class CvController{
             links_ref    : links_ref,
             departamento : departamento,
             distrito     : distrito,
-            tcontrato    : tcontrato
+            tcontrato    : tcontrato,
+            titulo       : titulo
         };
 
         User.findByIdAndUpdate(id_user, updateData, (err, userFound) => {
